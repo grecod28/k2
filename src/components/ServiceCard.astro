@@ -1,0 +1,51 @@
+---
+import ServiceCardContent from './ServiceCardContent.astro';
+
+interface Props {
+	icon: string;
+	title: string;
+	description: string;
+	index?: string;
+	delay?: number;
+	featured?: boolean;
+	href?: string;
+}
+
+const { icon, title, description, index, delay = 0, featured = false, href } = Astro.props;
+---
+
+{
+	featured && href ? (
+		<a
+			href={href}
+			class="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-500/30 bg-gradient-to-br from-primary-500/10 via-surface to-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/60 hover:shadow-[0_16px_40px_-16px_var(--color-primary-500)] lg:col-span-2"
+			data-reveal
+			style={`--reveal-delay: ${delay}ms`}
+		>
+			<ServiceCardContent
+				icon={icon}
+				title={title}
+				description={description}
+				index={index}
+				featured
+			/>
+		</a>
+	) : (
+		<article
+			class="group relative flex flex-col rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:bg-surface-2"
+			data-reveal
+			style={`--reveal-delay: ${delay}ms`}
+		>
+			<span
+				class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+				aria-hidden="true"
+			></span>
+			<ServiceCardContent
+				icon={icon}
+				title={title}
+				description={description}
+				index={index}
+			/>
+		</article>
+	)
+}

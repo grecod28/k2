@@ -1,1 +1,307 @@
 @import "tailwindcss";
+
+@theme {
+  /* Tipografía */
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Base */
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-surface-2: #171717;
+  --color-border: #262626;
+  --color-border-strong: #3a3a3a;
+  --color-text: #fafafa;
+  --color-text-2: #a6a6a6;
+  --color-text-3: #6b6b6b;
+
+  /* Naranja — primario */
+  --color-primary-50: #f7f2ed;
+  --color-primary-100: #f4e4d7;
+  --color-primary-200: #f1c8a7;
+  --color-primary-300: #f1a56a;
+  --color-primary-400: #f0832d;
+  --color-primary-500: #e2690a;
+  --color-primary-600: #b55204;
+  --color-primary-700: #8d4003;
+  --color-primary-800: #632e04;
+  --color-primary-900: #3f1e04;
+  --color-primary-950: #261305;
+
+  /* Turquesa — secundario */
+  --color-secondary-50: #eff5f5;
+  --color-secondary-100: #deedec;
+  --color-secondary-200: #b9dfdc;
+  --color-secondary-300: #8bd0ca;
+  --color-secondary-400: #5dc1b8;
+  --color-secondary-500: #3fafa5;
+  --color-secondary-600: #2f8c83;
+  --color-secondary-700: #256d67;
+  --color-secondary-800: #1c4e49;
+  --color-secondary-900: #133230;
+  --color-secondary-950: #0d1f1d;
+
+  /* Granate — acento oscuro */
+  --color-accent-50: #f6efee;
+  --color-accent-100: #f0dedb;
+  --color-accent-200: #e5bab3;
+  --color-accent-300: #da8d81;
+  --color-accent-400: #cf5f4e;
+  --color-accent-500: #7a2a1e;
+  --color-accent-600: #531b12;
+  --color-accent-700: #31100b;
+  --color-accent-800: #100604;
+  --color-accent-900: #0c0403;
+  --color-accent-950: #080302;
+
+  /* Dorado — acento cálido */
+  --color-gold-50: #f6f3ef;
+  --color-gold-100: #eee7dd;
+  --color-gold-200: #e1cfb7;
+  --color-gold-300: #d3b288;
+  --color-gold-400: #c59658;
+  --color-gold-500: #c5904c;
+  --color-gold-600: #ab7633;
+  --color-gold-700: #8b612a;
+  --color-gold-800: #6a4b22;
+  --color-gold-900: #4e371b;
+  --color-gold-950: #392a16;
+
+  /* Semánticos */
+  --color-success: #3fafa5;
+  --color-warning: #c5904c;
+  --color-error: #cf5f4e;
+  --color-info: #8bd0ca;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-primary-500);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary-500);
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Animaciones decorativas
+   ============================================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(24px, -18px);
+  }
+  66% {
+    transform: translate(-16px, 12px);
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-float-soft {
+  animation: float-soft 9s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 16s ease-in-out infinite;
+}
+
+/* ============================================================
+   Accesibilidad: movimiento reducido
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-float,
+  .animate-float-soft,
+  .animate-glow-pulse,
+  .animate-drift {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:root {
+  /* Base */
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-surface-2: #171717;
+  --color-border: #262626;
+  --color-border-strong: #3a3a3a;
+  --color-text: #fafafa;
+  --color-text-2: #a6a6a6;
+  --color-text-3: #6b6b6b;
+
+  /* Naranja — primario */
+  --color-primary-50: #f7f2ed;
+  --color-primary-100: #f4e4d7;
+  --color-primary-200: #f1c8a7;
+  --color-primary-300: #f1a56a;
+  --color-primary-400: #f0832d;
+  --color-primary-500: #e2690a;
+  --color-primary-600: #b55204;
+  --color-primary-700: #8d4003;
+  --color-primary-800: #632e04;
+  --color-primary-900: #3f1e04;
+  --color-primary-950: #261305;
+
+  /* Turquesa — secundario */
+  --color-secondary-50: #eff5f5;
+  --color-secondary-100: #deedec;
+  --color-secondary-200: #b9dfdc;
+  --color-secondary-300: #8bd0ca;
+  --color-secondary-400: #5dc1b8;
+  --color-secondary-500: #3fafa5;
+  --color-secondary-600: #2f8c83;
+  --color-secondary-700: #256d67;
+  --color-secondary-800: #1c4e49;
+  --color-secondary-900: #133230;
+  --color-secondary-950: #0d1f1d;
+
+  /* Granate — acento oscuro */
+  --color-accent-50: #f6efee;
+  --color-accent-100: #f0dedb;
+  --color-accent-200: #e5bab3;
+  --color-accent-300: #da8d81;
+  --color-accent-400: #cf5f4e;
+  --color-accent-500: #7a2a1e;
+  --color-accent-600: #531b12;
+  --color-accent-700: #31100b;
+  --color-accent-800: #100604;
+  --color-accent-900: #0c0403;
+  --color-accent-950: #080302;
+
+  /* Dorado — acento cálido */
+  --color-gold-50: #f6f3ef;
+  --color-gold-100: #eee7dd;
+  --color-gold-200: #e1cfb7;
+  --color-gold-300: #d3b288;
+  --color-gold-400: #c59658;
+  --color-gold-500: #c5904c;
+  --color-gold-600: #ab7633;
+  --color-gold-700: #8b612a;
+  --color-gold-800: #6a4b22;
+  --color-gold-900: #4e371b;
+  --color-gold-950: #392a16;
+
+  /* Semánticos */
+  --color-success: #3fafa5;
+  --color-warning: #c5904c;
+  --color-error: #cf5f4e;
+  --color-info: #8bd0ca;
+}

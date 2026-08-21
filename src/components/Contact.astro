@@ -1,0 +1,397 @@
+---
+import Icon from './Icon.astro';
+import Button from './Button.astro';
+import SectionHeading from './SectionHeading.astro';
+
+const contactInfo = [
+	{
+		icon: 'mail',
+		label: 'Email',
+		value: 'hola@k2studio.es',
+		href: 'mailto:hola@k2studio.es'
+	},
+	{
+		icon: 'phone',
+		label: 'Teléfono',
+		value: '+34 600 000 000',
+		href: 'tel:+34600000000'
+	},
+	{
+		icon: 'map-pin',
+		label: 'Oficina',
+		value: 'Madrid, España',
+		href: null
+	}
+];
+
+const socials = [
+	{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/k2studio' },
+	{ icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/k2studio' },
+	{ icon: 'twitter', label: 'X', href: 'https://x.com/k2studio' }
+];
+
+const serviceOptions = [
+	'Estrategia digital',
+	'SEO',
+	'Publicidad online',
+	'Social Media',
+	'Branding',
+	'Desarrollo web',
+	'Analítica y optimización',
+	'No lo tengo claro'
+];
+
+const fieldClasses =
+	'w-full rounded-xl border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-3 transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25';
+const labelClasses = 'mb-2 block text-sm font-medium text-text';
+---
+
+<section id="contacto" class="relative py-24 lg:py-32">
+	<div class="mx-auto grid max-w-6xl gap-16 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+		<div>
+			<SectionHeading
+				eyebrow="Contacto"
+				description="Cuéntanos en qué punto está tu negocio y qué quieres conseguir. Sin compromiso y con respuesta en menos de 24 horas laborables."
+			>
+				Hablemos de tu proyecto
+			</SectionHeading>
+
+			<ul class="mt-10 space-y-4">
+				{
+					contactInfo.map((item, i) => (
+						<li data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+							{item.href ? (
+								<a
+									href={item.href}
+									class="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-all duration-300 hover:border-border-strong hover:bg-surface-2"
+								>
+									<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+										<Icon name={item.icon} size={19} />
+									</span>
+									<span>
+										<span class="block text-xs uppercase tracking-wider text-text-3">
+											{item.label}
+										</span>
+										<span class="mt-0.5 block text-sm font-medium text-text transition-colors group-hover:text-primary-300">
+											{item.value}
+										</span>
+									</span>
+								</a>
+							) : (
+								<div class="flex items-center gap-4 rounded-xl border border-border bg-surface p-4">
+									<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+										<Icon name={item.icon} size={19} />
+									</span>
+									<span>
+										<span class="block text-xs uppercase tracking-wider text-text-3">
+											{item.label}
+										</span>
+										<span class="mt-0.5 block text-sm font-medium text-text">
+											{item.value}
+										</span>
+									</span>
+								</div>
+							)}
+						</li>
+					))
+				}
+			</ul>
+
+			<div class="mt-10" data-reveal style="--reveal-delay: 300ms">
+				<p class="text-sm font-medium text-text-3">Síguenos</p>
+				<ul class="mt-3 flex gap-3">
+					{
+						socials.map((social) => (
+							<li>
+								<a
+									href={social.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={social.label}
+									class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
+								>
+									<Icon name={social.icon} size={19} />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+
+		<div data-reveal style="--reveal-delay: 150ms">
+			<div class="rounded-2xl border border-border bg-surface p-6 sm:p-9">
+				<form id="form-contacto" novalidate>
+					<div class="grid gap-5 sm:grid-cols-2">
+						<div>
+							<label for="campo-nombre" class={labelClasses}>
+								Nombre <span class="text-primary-400" aria-hidden="true">*</span>
+							</label>
+							<input
+								id="campo-nombre"
+								name="nombre"
+								type="text"
+								autocomplete="name"
+								required
+								class={`${fieldClasses}`}
+							/>
+							<p id="error-nombre" class="mt-2 hidden text-sm text-error" role="alert"></p>
+						</div>
+						<div>
+							<label for="campo-email" class={labelClasses}>
+								Email <span class="text-primary-400" aria-hidden="true">*</span>
+							</label>
+							<input
+								id="campo-email"
+								name="email"
+								type="email"
+								autocomplete="email"
+								required
+								class={`${fieldClasses}`}
+							/>
+							<p id="error-email" class="mt-2 hidden text-sm text-error" role="alert"></p>
+						</div>
+					</div>
+
+					<div class="mt-5">
+						<label for="campo-empresa" class={labelClasses}>
+							Empresa <span class="text-text-3" aria-hidden="true">(opcional)</span>
+						</label>
+						<input
+							id="campo-empresa"
+							name="empresa"
+							type="text"
+							autocomplete="organization"
+							class={`${fieldClasses}`}
+						/>
+					</div>
+
+					<div class="mt-5">
+						<label for="campo-servicio" class={labelClasses}>
+							Servicio de interés{' '}
+							<span class="text-primary-400" aria-hidden="true">*</span>
+						</label>
+						<select id="campo-servicio" name="servicio" required class={`${fieldClasses}`}>
+							<option value="" disabled selected>
+								Selecciona un servicio
+							</option>
+							{
+								serviceOptions.map((option) => (
+									<option value={option}>{option}</option>
+								))
+							}
+						</select>
+						<p id="error-servicio" class="mt-2 hidden text-sm text-error" role="alert"></p>
+					</div>
+
+					<div class="mt-5">
+						<label for="campo-mensaje" class={labelClasses}>
+							Mensaje <span class="text-primary-400" aria-hidden="true">*</span>
+						</label>
+						<textarea
+							id="campo-mensaje"
+							name="mensaje"
+							rows="5"
+							required
+							class={`${fieldClasses} resize-y`}
+						></textarea>
+						<p id="error-mensaje" class="mt-2 hidden text-sm text-error" role="alert"></p>
+					</div>
+
+					<p
+						id="estado-formulario"
+						class="mt-5 hidden rounded-xl border border-error/40 bg-error/10 px-4 py-3 text-sm text-error"
+						role="alert"
+					></p>
+
+					<Button type="submit" size="lg" class="mt-7 w-full sm:w-auto">
+						<span class="label-enviar flex items-center gap-2">
+							<Icon name="send" size={18} />
+							Enviar mensaje
+						</span>
+						<span class="label-enviando hidden items-center gap-2">
+							<svg
+								class="h-4 w-4 animate-spin"
+								viewBox="0 0 24 24"
+								fill="none"
+								aria-hidden="true"
+							>
+								<circle
+									class="opacity-25"
+									cx="12"
+									cy="12"
+									r="10"
+									stroke="currentColor"
+									stroke-width="4"
+								></circle>
+								<path
+									class="opacity-75"
+									fill="currentColor"
+									d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"
+								></path>
+							</svg>
+							Enviando…
+						</span>
+					</Button>
+				</form>
+
+				<div id="contacto-exito" class="hidden py-8 text-center" role="status" aria-live="polite">
+					<span
+						class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-success/40 bg-success/10 text-success"
+					>
+						<Icon name="check" size={28} />
+					</span>
+					<h3 class="mt-6 font-display text-2xl font-bold tracking-tight text-text">
+						Mensaje enviado
+					</h3>
+					<p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-2">
+						Gracias por escribirnos. Hemos recibido tu mensaje y te responderemos en
+						menos de 24 horas laborables.
+					</p>
+					<Button variant="secondary" type="button" class="mt-8" id="boton-otro-mensaje">
+						Enviar otro mensaje
+					</Button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const CONTACT_ENDPOINT = '';
+
+	const form = document.getElementById('form-contacto');
+	const successPanel = document.getElementById('contacto-exito');
+	const formStatus = document.getElementById('estado-formulario');
+	const submitButton = form?.querySelector('button[type="submit"]');
+	const sendLabel = form?.querySelector('.label-enviar');
+	const loadingLabel = form?.querySelector('.label-enviando');
+
+	const fields = [
+		{ id: 'campo-nombre', errorId: 'error-nombre' },
+		{ id: 'campo-email', errorId: 'error-email' },
+		{ id: 'campo-servicio', errorId: 'error-servicio' },
+		{ id: 'campo-mensaje', errorId: 'error-mensaje' }
+	];
+
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	function setFieldError(field, message) {
+		const input = document.getElementById(field.id);
+		const error = document.getElementById(field.errorId);
+		if (!input || !error) return;
+
+		if (message) {
+			input.setAttribute('aria-invalid', 'true');
+			input.classList.add('border-error', 'focus:border-error', 'focus:ring-error/25');
+			error.textContent = message;
+			error.classList.remove('hidden');
+		} else {
+			input.removeAttribute('aria-invalid');
+			input.classList.remove('border-error', 'focus:border-error', 'focus:ring-error/25');
+			error.classList.add('hidden');
+			error.textContent = '';
+		}
+	}
+
+	function validateField(field) {
+		const input = document.getElementById(field.id);
+		if (!input) return true;
+
+		const value = input.value.trim();
+		let message = '';
+
+		if (!value) {
+			message = 'Este campo es obligatorio.';
+		} else if (input.type === 'email' && !emailPattern.test(value)) {
+			message = 'Introduce un email válido.';
+		}
+
+		setFieldError(field, message);
+		return !message;
+	}
+
+	form?.addEventListener('input', (event) => {
+		const field = fields.find((f) => f.id === event.target.id);
+		if (field) {
+			setFieldError(field, '');
+		}
+		formStatus?.classList.add('hidden');
+	});
+
+	async function sendContact(data) {
+		if (!CONTACT_ENDPOINT) {
+			await new Promise((resolve) => setTimeout(resolve, 900));
+			return { ok: true };
+		}
+
+		const response = await fetch(CONTACT_ENDPOINT, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data)
+		});
+
+		if (!response.ok) {
+			throw new Error(`Error ${response.status}`);
+		}
+
+		return response.json();
+	}
+
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+
+		let isValid = true;
+		let firstInvalid = null;
+
+		for (const field of fields) {
+			const valid = validateField(field);
+			if (!valid) {
+				isValid = false;
+				firstInvalid ??= document.getElementById(field.id);
+			}
+		}
+
+		if (!isValid) {
+			firstInvalid?.focus();
+			return;
+		}
+
+		submitButton?.setAttribute('disabled', '');
+		sendLabel?.classList.add('hidden');
+		loadingLabel?.classList.remove('hidden');
+		loadingLabel?.classList.add('flex');
+		formStatus?.classList.add('hidden');
+
+		const data = {
+			nombre: document.getElementById('campo-nombre').value.trim(),
+			email: document.getElementById('campo-email').value.trim(),
+			empresa: document.getElementById('campo-empresa').value.trim(),
+			servicio: document.getElementById('campo-servicio').value,
+			mensaje: document.getElementById('campo-mensaje').value.trim()
+		};
+
+		try {
+			await sendContact(data);
+			form.hidden = true;
+			successPanel?.classList.remove('hidden');
+		} catch {
+			if (formStatus) {
+				formStatus.textContent =
+					'No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a hola@k2studio.es.';
+				formStatus.classList.remove('hidden');
+			}
+		} finally {
+			submitButton?.removeAttribute('disabled');
+			sendLabel?.classList.remove('hidden');
+			loadingLabel?.classList.add('hidden');
+			loadingLabel?.classList.remove('flex');
+		}
+	});
+
+	document.getElementById('boton-otro-mensaje')?.addEventListener('click', () => {
+		form?.reset();
+		form.hidden = false;
+		successPanel?.classList.add('hidden');
+	});
+</script>

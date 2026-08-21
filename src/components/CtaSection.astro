@@ -1,0 +1,43 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="relative overflow-hidden border-y border-border bg-surface">
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<div
+			class="absolute left-1/2 top-1/2 h-[26rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.12] blur-3xl"
+		></div>
+	</div>
+
+	<div class="relative mx-auto max-w-4xl px-5 py-24 text-center sm:px-8 lg:py-32">
+		<p
+			class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400"
+			data-reveal
+		>
+			¿Tienes un proyecto en mente?
+		</p>
+		<h2
+			class="mt-5 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl lg:leading-[1.12]"
+			data-reveal
+			style="--reveal-delay: 100ms"
+		>
+			Cuéntanos qué quieres conseguir y vemos cómo podemos ayudarte
+		</h2>
+		<p
+			class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-2 sm:text-lg"
+			data-reveal
+			style="--reveal-delay: 200ms"
+		>
+			Una conversación sin compromiso, una visión clara de lo que tu negocio puede
+			lograr. Respondemos en menos de 24 horas laborables.
+		</p>
+		<div
+			class="mt-10 flex flex-wrap items-center justify-center gap-4"
+			data-reveal
+			style="--reveal-delay: 300ms"
+		>
+			<Button href="#contacto" size="lg" arrow>Solicita una consulta</Button>
+			<Button href="#servicios" variant="secondary" size="lg">Ver servicios</Button>
+		</div>
+	</div>
+</section>

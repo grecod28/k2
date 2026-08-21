@@ -1,0 +1,88 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+	{
+		icon: 'target',
+		title: 'Estrategia digital',
+		description:
+			'Definimos objetivos, canales y mensajes con un plan medible desde el primer día. Nada de acciones sueltas.'
+	},
+	{
+		icon: 'search',
+		title: 'SEO',
+		description:
+			'Posicionamos tu web donde tu cliente busca: visibilidad orgánica sostenible que llena tu embudo.'
+	},
+	{
+		icon: 'megaphone',
+		title: 'Publicidad online',
+		description:
+			'Campañas en Google y Meta pensadas para maximizar cada euro invertido, con control constante.'
+	},
+	{
+		icon: 'share-2',
+		title: 'Social Media',
+		description:
+			'Contenido y comunidad que convierten seguidores en clientes reales, no en números vacíos.'
+	},
+	{
+		icon: 'pen-tool',
+		title: 'Branding',
+		description:
+			'Identidad, tono y narrativa que hacen tu marca reconocible, coherente y memorable.'
+	},
+	{
+		icon: 'code',
+		title: 'Desarrollo web',
+		description:
+			'Webs rápidas, accesibles y orientadas a conversión. Porque el diseño sin rendimiento no vende.'
+	},
+	{
+		icon: 'bar-chart',
+		title: 'Analítica y optimización',
+		description:
+			'Medimos todo y mejoramos en cada ciclo. Decisiones basadas en datos, no en opiniones.'
+	}
+];
+---
+
+<section id="servicios" class="relative py-24 lg:py-32">
+	<div class="mx-auto max-w-6xl px-5 sm:px-8">
+		<div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+			<SectionHeading
+				eyebrow="Servicios"
+				description="Cada servicio funciona por sí solo, pero juntos forman un sistema diseñado para que tu negocio crezca de forma sostenida."
+			>
+				Todo lo que tu marca necesita para crecer
+			</SectionHeading>
+			<p class="max-w-xs shrink-0 text-sm text-text-3 md:pb-2" data-reveal style="--reveal-delay: 150ms">
+				Del primer análisis a la optimización continua: un único equipo, una única
+				estrategia.
+			</p>
+		</div>
+
+		<div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				services.map((service, i) => (
+					<ServiceCard
+						icon={service.icon}
+						title={service.title}
+						description={service.description}
+						index={String(i + 1).padStart(2, '0')}
+						delay={(i % 3) * 100}
+					/>
+				))
+			}
+			<ServiceCard
+				icon="arrow-up-right"
+				title="¿Buscas algo más?"
+				description="Hablemos de tu caso. Si tu reto no encaja en ninguna casilla, diseñamos una solución a medida."
+				featured
+				href="#contacto"
+				delay={100}
+			/>
+		</div>
+	</div>
+</section>
