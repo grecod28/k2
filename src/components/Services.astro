@@ -6,64 +6,48 @@ const services = [
 	{
 		icon: 'target',
 		title: 'Estrategia digital',
-		description:
-			'Definimos objetivos, canales y mensajes con un plan medible desde el primer día. Nada de acciones sueltas.'
+		description: 'Un plan claro para crecer.'
 	},
 	{
 		icon: 'search',
 		title: 'SEO',
-		description:
-			'Posicionamos tu web donde tu cliente busca: visibilidad orgánica sostenible que llena tu embudo.'
+		description: 'Visibilidad que se convierte en clientes.'
 	},
 	{
 		icon: 'megaphone',
 		title: 'Publicidad online',
-		description:
-			'Campañas en Google y Meta pensadas para maximizar cada euro invertido, con control constante.'
+		description: 'Cada euro invertido, medido.'
 	},
 	{
 		icon: 'share-2',
 		title: 'Social Media',
-		description:
-			'Contenido y comunidad que convierten seguidores en clientes reales, no en números vacíos.'
+		description: 'Contenido que construye marca.'
 	},
 	{
 		icon: 'pen-tool',
 		title: 'Branding',
-		description:
-			'Identidad, tono y narrativa que hacen tu marca reconocible, coherente y memorable.'
+		description: 'Identidad que se recuerda.'
 	},
 	{
 		icon: 'code',
 		title: 'Desarrollo web',
-		description:
-			'Webs rápidas, accesibles y orientadas a conversión. Porque el diseño sin rendimiento no vende.'
+		description: 'Webs rápidas que convierten.'
 	},
 	{
 		icon: 'bar-chart',
 		title: 'Analítica y optimización',
-		description:
-			'Medimos todo y mejoramos en cada ciclo. Decisiones basadas en datos, no en opiniones.'
+		description: 'Decisiones con datos, no opiniones.'
 	}
 ];
 ---
 
-<section id="servicios" class="relative py-24 lg:py-32">
+<section id="servicios" class="relative py-20 lg:py-28">
 	<div class="mx-auto max-w-6xl px-5 sm:px-8">
-		<div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-			<SectionHeading
-				eyebrow="Servicios"
-				description="Cada servicio funciona por sí solo, pero juntos forman un sistema diseñado para que tu negocio crezca de forma sostenida."
-			>
-				Todo lo que tu marca necesita para crecer
-			</SectionHeading>
-			<p class="max-w-xs shrink-0 text-sm text-text-3 md:pb-2" data-reveal style="--reveal-delay: 150ms">
-				Del primer análisis a la optimización continua: un único equipo, una única
-				estrategia.
-			</p>
-		</div>
+		<SectionHeading eyebrow="Servicios" description="Siete áreas, un único objetivo: que tu negocio crezca.">
+			Todo lo que tu marca necesita
+		</SectionHeading>
 
-		<div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+		<div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{
 				services.map((service, i) => (
 					<ServiceCard
@@ -71,17 +55,17 @@ const services = [
 						title={service.title}
 						description={service.description}
 						index={String(i + 1).padStart(2, '0')}
-						delay={(i % 3) * 100}
+						delay={(i % 3) * 90}
 					/>
 				))
 			}
 			<ServiceCard
 				icon="arrow-up-right"
 				title="¿Buscas algo más?"
-				description="Hablemos de tu caso. Si tu reto no encaja en ninguna casilla, diseñamos una solución a medida."
+				description="Diseñamos una solución a medida para tu caso."
 				featured
 				href="#contacto"
-				delay={100}
+				delay={90}
 			/>
 		</div>
 	</div>

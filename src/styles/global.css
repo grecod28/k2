@@ -135,9 +135,21 @@ body {
   will-change: opacity, transform;
 }
 
+[data-reveal='left'] {
+  transform: translateX(-36px);
+}
+
+[data-reveal='right'] {
+  transform: translateX(36px);
+}
+
+[data-reveal='zoom'] {
+  transform: scale(0.94);
+}
+
 [data-reveal].is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* ============================================================
@@ -189,6 +201,42 @@ body {
   }
 }
 
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 .animate-float {
   animation: float 7s ease-in-out infinite;
 }
@@ -203,6 +251,75 @@ body {
 
 .animate-drift {
   animation: drift 16s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 45s linear infinite;
+}
+
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-word 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--word-delay, 0ms);
+}
+
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.scroll-hint-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-hint-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--color-primary-400), transparent);
+  animation: scroll-hint 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@supports (animation-timeline: scroll()) {
+  .parallax-slow {
+    animation: parallax-slow linear both;
+    animation-timeline: scroll();
+    animation-range: 0 600px;
+  }
+
+  .parallax-fast {
+    animation: parallax-fast linear both;
+    animation-timeline: scroll();
+    animation-range: 0 600px;
+  }
+}
+
+@keyframes parallax-slow {
+  to {
+    transform: translateY(64px);
+  }
+}
+
+@keyframes parallax-fast {
+  to {
+    transform: translateY(120px);
+  }
 }
 
 /* ============================================================
@@ -220,10 +337,18 @@ body {
     transition: none;
   }
 
+  .hero-word {
+    opacity: 1;
+    animation: none;
+  }
+
   .animate-float,
   .animate-float-soft,
   .animate-glow-pulse,
-  .animate-drift {
+  .animate-drift,
+  .animate-spin-slow,
+  .marquee-track,
+  .scroll-hint-line::after {
     animation: none;
   }
 

@@ -18,7 +18,7 @@ const { icon, title, description, index, delay = 0, featured = false, href } = A
 	featured && href ? (
 		<a
 			href={href}
-			class="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-500/30 bg-gradient-to-br from-primary-500/10 via-surface to-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/60 hover:shadow-[0_16px_40px_-16px_var(--color-primary-500)] lg:col-span-2"
+			class="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-500/30 bg-gradient-to-br from-primary-500/10 via-surface to-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/60 hover:shadow-[0_16px_40px_-16px_var(--color-primary-500)] lg:col-span-2"
 			data-reveal
 			style={`--reveal-delay: ${delay}ms`}
 		>
@@ -32,7 +32,7 @@ const { icon, title, description, index, delay = 0, featured = false, href } = A
 		</a>
 	) : (
 		<article
-			class="group relative flex flex-col rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:bg-surface-2"
+			class="group relative flex flex-col rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-border-strong hover:bg-surface-2"
 			data-reveal
 			style={`--reveal-delay: ${delay}ms`}
 		>

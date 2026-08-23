@@ -1,15 +1,24 @@
 ---
 import Button from './Button.astro';
+import Marquee from './Marquee.astro';
+
+const marqueeWords = ['Hablemos', 'K2 Studio', 'Tu marca', 'Resultados'];
 ---
 
 <section class="relative overflow-hidden border-y border-border bg-surface">
-	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+	<div
+		class="pointer-events-none absolute inset-0"
+		aria-hidden="true"
+	>
 		<div
-			class="absolute left-1/2 top-1/2 h-[26rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.12] blur-3xl"
+			class="absolute left-1/2 top-1/2 h-[24rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.12] blur-3xl"
 		></div>
+		<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 rotate-[-3deg] opacity-[0.05]">
+			<Marquee items={marqueeWords} size="lg" outlined duration={36} />
+		</div>
 	</div>
 
-	<div class="relative mx-auto max-w-4xl px-5 py-24 text-center sm:px-8 lg:py-32">
+	<div class="relative mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 lg:py-28">
 		<p
 			class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400"
 			data-reveal
@@ -21,23 +30,21 @@ import Button from './Button.astro';
 			data-reveal
 			style="--reveal-delay: 100ms"
 		>
-			Cuéntanos qué quieres conseguir y vemos cómo podemos ayudarte
+			Hablemos.
 		</h2>
 		<p
-			class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-2 sm:text-lg"
+			class="mx-auto mt-4 max-w-md text-base text-text-2 sm:text-lg"
 			data-reveal
 			style="--reveal-delay: 200ms"
 		>
-			Una conversación sin compromiso, una visión clara de lo que tu negocio puede
-			lograr. Respondemos en menos de 24 horas laborables.
+			Cuéntanos qué quieres conseguir. Sin compromiso.
 		</p>
 		<div
-			class="mt-10 flex flex-wrap items-center justify-center gap-4"
+			class="mt-9 flex flex-wrap items-center justify-center gap-4"
 			data-reveal
 			style="--reveal-delay: 300ms"
 		>
 			<Button href="#contacto" size="lg" arrow>Solicita una consulta</Button>
-			<Button href="#servicios" variant="secondary" size="lg">Ver servicios</Button>
 		</div>
 	</div>
 </section>

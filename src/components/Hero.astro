@@ -2,6 +2,8 @@
 import Icon from './Icon.astro';
 import Button from './Button.astro';
 
+const words = ['Convertimos', 'tu', 'presencia', 'digital', 'en'];
+
 const chips = [
 	{ icon: 'search', label: 'SEO' },
 	{ icon: 'megaphone', label: 'Ads' },
@@ -23,7 +25,7 @@ const chips = [
 	</div>
 
 	<div
-		class="relative mx-auto grid max-w-6xl gap-16 px-5 pb-24 pt-36 sm:px-8 md:pt-44 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:pb-32"
+		class="relative mx-auto grid max-w-6xl gap-14 px-5 pb-20 pt-36 sm:px-8 md:pt-44 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:pb-28"
 	>
 		<div>
 			<div data-reveal>
@@ -34,60 +36,66 @@ const chips = [
 						<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-60"></span>
 						<span class="relative inline-flex h-2 w-2 rounded-full bg-secondary-400"></span>
 					</span>
-					Agencia de marketing digital · Galicia
+					Agencia de marketing digital
 				</span>
 			</div>
 
 			<h1
-				class="mt-7 font-display text-4xl font-bold leading-[1.08] tracking-tight text-text sm:text-5xl lg:text-6xl xl:text-[4.25rem]"
-				data-reveal
-				style="--reveal-delay: 100ms"
+				class="mt-7 font-display text-[2.6rem] font-bold leading-[1.06] tracking-tight text-text sm:text-6xl xl:text-[4.6rem]"
 			>
-				Convertimos tu presencia digital en{' '}
-				<span class="text-primary-400">crecimiento real</span>.
+				{
+					words.map((word, i) => (
+						<span
+							class="hero-word mr-[0.28em]"
+							style={`--word-delay: ${150 + i * 90}ms`}
+						>
+							{word}
+						</span>
+					))
+				}
+				<span
+					class="hero-word inline-block bg-gradient-to-r from-primary-400 to-primary-300 bg-clip-text text-transparent"
+					style="--word-delay: 650ms"
+				>
+					crecimiento real.
+				</span>
 			</h1>
 
 			<p
-				class="mt-6 max-w-xl text-base leading-relaxed text-text-2 sm:text-lg"
+				class="mt-6 max-w-md text-base leading-relaxed text-text-2 sm:text-lg"
 				data-reveal
-				style="--reveal-delay: 200ms"
+				style="--reveal-delay: 800ms"
 			>
-				Somos K2 Studio. Diseñamos estrategias, ejecutamos campañas y optimizamos cada
-				euro invertido para que tu marca deje de competir por ruido y empiece a ganar
-				mercado.
+				Estrategia, SEO, publicidad y desarrollo web. Menos ruido, más resultados.
 			</p>
 
-			<div class="mt-9 flex flex-wrap items-center gap-4" data-reveal style="--reveal-delay: 300ms">
-				<Button href="#contacto" size="lg" arrow>Solicita una consulta</Button>
-				<Button href="#servicios" variant="secondary" size="lg">Ver servicios</Button>
-			</div>
-
-			<ul
-				class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-text-3"
+			<div
+				class="mt-9 flex flex-wrap items-center gap-4"
 				data-reveal
-				style="--reveal-delay: 400ms"
+				style="--reveal-delay: 950ms"
 			>
-				{
-					['Equipo senior', 'Enfoque data-driven', 'Sin permanencias'].map((item) => (
-						<li class="flex items-center gap-2">
-							<Icon name="check" size={15} class="text-secondary-400" />
-							{item}
-						</li>
-					))
-				}
-			</ul>
+				<Button href="#contacto" size="lg" arrow>Hablemos</Button>
+				<Button href="#servicios" variant="secondary" size="lg">Conócenos</Button>
+			</div>
 		</div>
 
-		<div class="relative mx-auto w-full max-w-md lg:max-w-none" data-reveal style="--reveal-delay: 250ms">
-			<div class="relative aspect-square" aria-hidden="true">
+		<div
+			class="relative mx-auto w-full max-w-md lg:max-w-none"
+			data-reveal="zoom"
+			style="--reveal-delay: 300ms"
+		>
+			<div class="parallax-slow relative aspect-square" aria-hidden="true">
+				<div
+					class="absolute inset-0 rounded-full border border-dashed border-border-strong animate-spin-slow"
+				></div>
 				<div
 					class="absolute inset-[8%] rounded-full border border-border bg-[radial-gradient(circle_at_30%_25%,var(--color-surface-2),var(--color-bg)_70%)]"
 				></div>
 				<div
-					class="absolute inset-[22%] rounded-full border border-border-strong bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_75%)] opacity-[0.14]"
+					class="absolute inset-[22%] rounded-full border border-border-strong bg-[radial-gradient(circle_at_60%_40%,var(--color-secondary-500),transparent_70%)] opacity-[0.1]"
 				></div>
 				<div
-					class="absolute inset-[36%] rounded-full border border-border bg-surface"
+					class="absolute inset-[30%] rounded-full border border-border bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_75%)] opacity-[0.14] animate-glow-pulse"
 				></div>
 				<div class="absolute inset-[44%] rounded-full bg-primary-500/90 shadow-[0_0_60px_-8px_var(--color-primary-500)]"></div>
 
@@ -120,6 +128,19 @@ const chips = [
 					<span class="text-sm font-semibold text-text">{chips[2].label}</span>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div
+		class="relative mx-auto hidden max-w-6xl px-5 pb-10 sm:px-8 lg:block"
+		data-reveal
+		style="--reveal-delay: 1200ms"
+	>
+		<div class="flex flex-col items-center gap-3" aria-hidden="true">
+			<span class="text-[10px] font-medium uppercase tracking-[0.3em] text-text-3">
+				Scroll
+			</span>
+			<span class="scroll-hint-line h-10 w-px bg-border"></span>
 		</div>
 	</div>
 </section>

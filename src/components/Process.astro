@@ -7,44 +7,40 @@ const steps = [
 		number: '01',
 		icon: 'compass',
 		title: 'Descubrimos',
-		description:
-			'Analizamos tu negocio, tu mercado y tu competencia para detectar oportunidades reales de crecimiento.'
+		description: 'Analizamos tu negocio y tu mercado.'
 	},
 	{
 		number: '02',
 		icon: 'pen-tool',
 		title: 'Diseñamos',
-		description:
-			'Convertimos el análisis en una estrategia clara: canales, mensajes y objetivos medibles.'
+		description: 'Estrategia clara, objetivos medibles.'
 	},
 	{
 		number: '03',
 		icon: 'rocket',
 		title: 'Ejecutamos',
-		description:
-			'Lanzamos campañas y activos con precisión, coordinando cada canal bajo un mismo objetivo.'
+		description: 'Cada canal, un mismo objetivo.'
 	},
 	{
 		number: '04',
 		icon: 'refresh-cw',
 		title: 'Optimizamos',
-		description:
-			'Medimos resultados, aprendemos y ajustamos. Cada ciclo mejora el anterior.'
+		description: 'Medimos, aprendemos, mejoramos.'
 	}
 ];
 ---
 
-<section id="proceso" class="relative border-y border-border bg-surface py-24 lg:py-32">
+<section id="proceso" class="relative border-y border-border bg-surface py-20 lg:py-28">
 	<div class="mx-auto max-w-6xl px-5 sm:px-8">
 		<SectionHeading
 			eyebrow="Proceso"
 			align="center"
-			description="Un método claro y transparente, sin sorpresas ni humo. Sabrás en qué punto estamos y qué viene después."
+			description="Simple, claro y medible."
 		>
 			Cómo trabajamos
 		</SectionHeading>
 
-		<ol class="relative mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+		<ol class="relative mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
 			<div
 				class="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-border-strong to-transparent lg:block"
 				aria-hidden="true"
@@ -54,7 +50,7 @@ const steps = [
 					<li
 						class="group relative flex flex-col items-start gap-5 lg:items-center lg:text-center"
 						data-reveal
-						style={`--reveal-delay: ${i * 120}ms`}
+						style={`--reveal-delay: ${i * 110}ms`}
 					>
 						<div class="relative flex h-14 w-14 items-center justify-center">
 							<span
@@ -77,7 +73,7 @@ const steps = [
 							<h3 class="mt-2 font-display text-lg font-semibold tracking-tight text-text">
 								{step.title}
 							</h3>
-							<p class="mt-2.5 text-sm leading-relaxed text-text-2">
+							<p class="mt-1.5 text-sm text-text-2">
 								{step.description}
 							</p>
 						</div>

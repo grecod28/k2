@@ -6,50 +6,47 @@ const reasons = [
 	{
 		icon: 'target',
 		title: 'Estrategias personalizadas',
-		description: 'Cada plan nace de tu negocio, tu mercado y tus objetivos. No aplicamos plantillas.'
+		description: 'Cada plan nace de tu negocio.'
 	},
 	{
 		icon: 'database',
-		title: 'Enfoque basado en datos',
-		description: 'Todas las decisiones se apoyan en métricas medibles, no en corazonadas.'
+		title: 'Datos, no corazonadas',
+		description: 'Decisiones basadas en métricas.'
 	},
 	{
 		icon: 'message-circle',
 		title: 'Comunicación directa',
-		description: 'Hablas con quien ejecuta tu proyecto. Sin intermediarios ni informes incomprensibles.'
+		description: 'Hablas con quien ejecuta.'
 	},
 	{
 		icon: 'zap',
 		title: 'Orientación a resultados',
-		description: 'Trabajamos contra objetivos concretos de negocio, no contra horas facturadas.'
+		description: 'Trabajamos contra objetivos.'
 	},
 	{
 		icon: 'eye',
 		title: 'Transparencia total',
-		description: 'Acceso claro a presupuestos, acciones y resultados en todo momento.'
+		description: 'Siempre sabes qué hacemos.'
 	}
 ];
 
 const highlights = ['Equipo senior', 'Sin permanencias', 'Respuesta en 24h'];
 ---
 
-<section id="por-que" class="relative overflow-hidden py-24 lg:py-32">
+<section id="por-que" class="relative overflow-hidden py-20 lg:py-28">
 	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
 		<div
 			class="absolute right-[-10%] top-[10%] h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,var(--color-gold-500),transparent_70%)] opacity-[0.07] blur-3xl"
 		></div>
 	</div>
 
-	<div class="relative mx-auto grid max-w-6xl gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+	<div class="relative mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
 		<div class="lg:sticky lg:top-32 lg:self-start">
-			<SectionHeading
-				eyebrow="Por qué nosotros"
-				description="No somos la agencia más grande. Somos la que más se obsesiona con que cada decisión sume a tu negocio."
-			>
-				Una agencia construida sobre resultados, no promesas
+			<SectionHeading eyebrow="Por qué nosotros">
+				No somos una agencia más
 			</SectionHeading>
 
-			<ul class="mt-8 flex flex-wrap gap-2.5" data-reveal style="--reveal-delay: 150ms">
+			<ul class="mt-7 flex flex-wrap gap-2.5" data-reveal style="--reveal-delay: 150ms">
 				{
 					highlights.map((item) => (
 						<li
@@ -60,33 +57,18 @@ const highlights = ['Equipo senior', 'Sin permanencias', 'Respuesta en 24h'];
 					))
 				}
 			</ul>
-
-			<blockquote
-				class="mt-10 rounded-2xl border-l-2 border-gold-500 bg-surface p-6"
-				data-reveal
-				style="--reveal-delay: 250ms"
-			>
-				<p class="text-base leading-relaxed text-text-2">
-					"La diferencia entre una agencia correcta y una excepcional no está en el
-					portafolio, sino en la obsesión por el detalle y por el resultado de cada
-					cliente."
-				</p>
-				<footer class="mt-4 text-sm font-semibold text-text">
-					Equipo K2 Studio
-				</footer>
-			</blockquote>
 		</div>
 
-		<ul class="space-y-4">
+		<ul class="space-y-3">
 			{
 				reasons.map((reason, i) => (
 					<li
-						class="group flex gap-5 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:border-border hover:bg-surface"
+						class="group flex items-center gap-5 rounded-2xl border border-transparent p-4 transition-all duration-300 hover:border-border hover:bg-surface"
 						data-reveal
-						style={`--reveal-delay: ${i * 90}ms`}
+						style={`--reveal-delay: ${i * 80}ms`}
 					>
 						<span
-							class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-surface-2 text-secondary-400 transition-colors duration-300 group-hover:border-secondary-500/40 group-hover:bg-secondary-500/10"
+							class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-surface-2 text-secondary-400 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-secondary-500/40 group-hover:bg-secondary-500/10"
 						>
 							<Icon name={reason.icon} size={20} />
 						</span>
@@ -94,7 +76,7 @@ const highlights = ['Equipo senior', 'Sin permanencias', 'Respuesta en 24h'];
 							<h3 class="font-display text-base font-semibold tracking-tight text-text">
 								{reason.title}
 							</h3>
-							<p class="mt-1.5 text-sm leading-relaxed text-text-2">
+							<p class="mt-0.5 text-sm text-text-2">
 								{reason.description}
 							</p>
 						</div>

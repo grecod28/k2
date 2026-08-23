@@ -1,0 +1,68 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+	items?: string[];
+	duration?: number;
+	reverse?: boolean;
+	size?: 'md' | 'lg';
+	outlined?: boolean;
+	class?: string;
+}
+
+const {
+	items = [],
+	duration = 30,
+	reverse = false,
+	size = 'md',
+	outlined = false,
+	class: className
+} = Astro.props;
+
+const sizes = {
+	md: 'text-2xl sm:text-3xl',
+	lg: 'text-5xl sm:text-6xl lg:text-7xl'
+};
+
+const itemClass = [
+	'flex shrink-0 items-center gap-8 pr-8 font-display font-bold tracking-tight',
+	sizes[size],
+	outlined
+		? 'text-transparent [-webkit-text-stroke:1px_var(--color-border-strong)]'
+		: 'text-text-3'
+].join(' ');
+---
+
+<div
+	class={[
+		'marquee',
+		reverse ? 'marquee-reverse' : '',
+		'select-none',
+		className
+	]
+		.filter(Boolean)
+		.join(' ')}
+>
+	<div class="marquee-track" style={`--marquee-duration: ${duration}s`}>
+		{[false, true].map((isClone) => (
+			<div class="flex shrink-0 items-center" aria-hidden={isClone ? 'true' : undefined}>
+				{
+					items.map((item) => (
+						<span class={itemClass}>
+							{item}
+							<Icon
+								name="sparkle"
+								size={size === 'lg' ? 22 : 16}
+								class={`shrink-0 ${
+									outlined
+										? 'text-primary-500 [-webkit-text-stroke:0px]'
+										: 'text-primary-500/70'
+								}`}
+							/>
+						</span>
+					))
+				}
+			</div>
+		))}
+	</div>
+</div>
