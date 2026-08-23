@@ -237,6 +237,15 @@ body {
   }
 }
 
+@keyframes dot-travel {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
 .animate-float {
   animation: float 7s ease-in-out infinite;
 }
@@ -296,6 +305,11 @@ body {
   animation: scroll-hint 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
+.dot-travel {
+  animation: dot-travel 3.6s ease-in-out infinite alternate;
+  will-change: left;
+}
+
 @supports (animation-timeline: scroll()) {
   .parallax-slow {
     animation: parallax-slow linear both;
@@ -348,7 +362,8 @@ body {
   .animate-drift,
   .animate-spin-slow,
   .marquee-track,
-  .scroll-hint-line::after {
+  .scroll-hint-line::after,
+  .dot-travel {
     animation: none;
   }
 

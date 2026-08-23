@@ -1,0 +1,116 @@
+---
+import Icon from './Icon.astro';
+import Marquee from './Marquee.astro';
+
+const audienceWords = [
+	'Pequeños negocios',
+	'Comercios',
+	'Restaurantes',
+	'Profesionales',
+	'Negocios familiares',
+	'Startups'
+];
+---
+
+<section id="cercania" class="relative overflow-hidden py-24 lg:py-32">
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<div
+			class="absolute left-[-6%] top-[20%] h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,var(--color-gold-500),transparent_70%)] opacity-[0.09] blur-3xl"
+		></div>
+		<div
+			class="absolute bottom-[10%] right-[-8%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_30%_40%,var(--color-surface-2),var(--color-bg)_70%)]"
+		></div>
+	</div>
+
+	<div
+		class="relative mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20"
+	>
+		<div>
+			<p
+				class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400"
+				data-reveal
+			>
+				Cercanía
+			</p>
+			<h2
+				class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
+				data-reveal
+				style="--reveal-delay: 100ms"
+			>
+				De casa en casa.
+				<br />
+				<span class="text-gold-400">De negocio en negocio.</span>
+			</h2>
+			<p
+				class="mt-6 max-w-md text-base leading-relaxed text-text-2 sm:text-lg"
+				data-reveal
+				style="--reveal-delay: 200ms"
+			>
+				Ayudamos a pequeños negocios a dar el salto al mundo digital. Hablamos
+				con las personas detrás de cada negocio y creamos soluciones a su
+				medida. Sin humo, sin fórmulas genéricas.
+			</p>
+			<blockquote
+				class="mt-8 max-w-md border-l-2 border-gold-500 pl-4 text-base italic leading-relaxed text-text-2"
+				data-reveal
+				style="--reveal-delay: 300ms"
+			>
+				No somos una gran corporación. Somos personas que trabajan con
+				personas.
+			</blockquote>
+		</div>
+
+		<div class="relative mx-auto w-full max-w-md" data-reveal="zoom" style="--reveal-delay: 200ms">
+			<div class="relative aspect-square" aria-hidden="true">
+				<div
+					class="absolute left-0 top-0 w-52 rounded-2xl border border-border bg-surface p-5 shadow-xl"
+				>
+					<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-2 text-gold-400">
+						<Icon name="home" size={20} />
+					</span>
+					<p class="mt-3 font-display text-base font-semibold text-text">
+						Tu negocio
+					</p>
+					<p class="mt-0.5 text-xs text-text-3">
+						Con nombre y apellidos.
+					</p>
+				</div>
+
+				<div
+					class="absolute bottom-0 right-0 w-52 animate-float-soft rounded-2xl border border-primary-500/30 bg-surface p-5 shadow-xl"
+					style="animation-delay: 0.8s"
+				>
+					<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary-500/40 bg-primary-500/10 text-primary-400">
+						<Icon name="home" size={20} />
+					</span>
+					<p class="mt-3 font-display text-base font-semibold text-text">
+						K2 Studio
+					</p>
+					<p class="mt-0.5 text-xs text-text-3">
+						A un mensaje de distancia.
+					</p>
+				</div>
+
+				<div class="absolute left-[22%] top-[30%] w-[56%] rotate-[24deg]">
+					<div class="border-t border-dashed border-border-strong"></div>
+					<span
+						class="dot-travel absolute -top-[3px] h-1.5 w-1.5 rounded-full bg-gold-400 shadow-[0_0_10px_var(--color-gold-400)]"
+					></span>
+				</div>
+
+				<span
+					class="absolute left-[30%] top-[12%] flex animate-float items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-text-2"
+					style="animation-delay: 1.6s"
+				>
+					Hecho a medida
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="relative mx-auto mt-16 max-w-6xl px-5 sm:px-8" data-reveal>
+		<div class="border-t border-border pt-8 opacity-60">
+			<Marquee items={audienceWords} outlined reverse duration={34} />
+		</div>
+	</div>
+</section>

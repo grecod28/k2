@@ -1,15 +1,30 @@
 ---
 import TeamMemberCard from './TeamMemberCard.astro';
+import TeamMemberInfo from './TeamMemberInfo.astro';
 import Button from './Button.astro';
 
 const members = [
 	{
 		photo: '/images/founder_1.JPG',
+		width: 1583,
+		height: 1600,
 		name: 'Andrés Blanco Ferro',
 		role: 'Fundador · Director de estrategia',
 		tags: ['Desarrollo web', 'Marketing digital', 'Estrategia'],
-		tagline:
-			'Tecnología y marketing bajo un mismo criterio: que cada proyecto sume a tu negocio.'
+		description:
+			'Tecnología y marketing bajo un mismo criterio: que cada proyecto sume a tu negocio. De la idea al lanzamiento, todo pasa por una estrategia clara, sin intermediarios.',
+		quote: 'Menos ruido, más resultados.'
+	},
+	{
+		photo: '/images/founder_2.png',
+		width: 263,
+		height: 320,
+		name: 'Daniel Sabucedo Sequeiros',
+		role: 'Editor & Creador audiovisual',
+		tags: ['Edición', 'Vídeo', 'Branding'],
+		description:
+			'Convierte ideas en imágenes que cuentan historias. Grabación, edición y dirección audiovisual para marcas que quieren hacerse notar.',
+		quote: 'Una buena historia vende más que mil anuncios.'
 	}
 ];
 ---
@@ -17,85 +32,71 @@ const members = [
 <section id="equipo" class="relative overflow-hidden border-y border-border bg-surface py-24 lg:py-32">
 	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
 		<div
-			class="absolute left-[-8%] top-[15%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.08] blur-3xl"
+			class="absolute left-[-8%] top-[10%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.08] blur-3xl"
+		></div>
+		<div
+			class="absolute bottom-[5%] right-[-8%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-secondary-500),transparent_70%)] opacity-[0.08] blur-3xl"
 		></div>
 	</div>
 
 	<div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-		{
-			members.length === 1 ? (
-				<div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-					<div data-reveal="left">
-						<TeamMemberCard
-							photo={members[0].photo}
-							name={members[0].name}
-							role={members[0].role}
-							tags={members[0].tags}
-							class="shadow-[0_32px_80px_-40px_var(--color-primary-500)]"
-						/>
-					</div>
+		<div class="mx-auto max-w-2xl text-center" data-reveal>
+			<p class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400">
+				Equipo
+			</p>
+			<h2
+				class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
+			>
+				Dos mentes, <span class="text-secondary-400">una visión</span>
+			</h2>
+		</div>
 
-					<div>
-						<p
-							class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400"
-							data-reveal
-						>
-							Equipo
-						</p>
-						<h2
-							class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
-							data-reveal
-							style="--reveal-delay: 100ms"
-						>
-							Una mente, <span class="text-secondary-400">una visión</span>
-						</h2>
-						<p
-							class="mt-6 max-w-md text-base leading-relaxed text-text-2 sm:text-lg"
-							data-reveal
-							style="--reveal-delay: 200ms"
-						>
-							{members[0].tagline}
-						</p>
-						<p
-							class="mt-4 max-w-md text-sm leading-relaxed text-text-3"
-							data-reveal
-							style="--reveal-delay: 280ms"
-						>
-							De la idea al lanzamiento: estrategia, código y resultados. Sin
-							intermediarios.
-						</p>
-						<div data-reveal style="--reveal-delay: 360ms" class="mt-9">
-							<Button href="#contacto" arrow>Hablemos de tu proyecto</Button>
-						</div>
-					</div>
+		<div class="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
+			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+				<div data-reveal="left">
+					<TeamMemberCard
+						photo={members[0].photo}
+						name={members[0].name}
+						width={members[0].width}
+						height={members[0].height}
+						class="shadow-[0_32px_80px_-40px_var(--color-primary-500)]"
+					/>
 				</div>
-			) : (
-				<>
-					<div class="mx-auto max-w-2xl text-center" data-reveal>
-						<p class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400">
-							Equipo
-						</p>
-						<h2
-							class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
-						>
-							Las mentes detrás de K2
-						</h2>
-					</div>
-					<div class="mt-14 grid gap-6 sm:grid-cols-2">
-						{
-							members.map((member, i) => (
-								<TeamMemberCard
-									photo={member.photo}
-									name={member.name}
-									role={member.role}
-									tags={member.tags}
-									class={i === 1 ? 'sm:translate-y-10' : ''}
-								/>
-							))
-						}
-					</div>
-				</>
-			)
-		}
+				<div>
+					<TeamMemberInfo
+						name={members[0].name}
+						role={members[0].role}
+						tags={members[0].tags}
+						description={members[0].description}
+						quote={members[0].quote}
+					/>
+				</div>
+			</div>
+
+			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+				<div class="lg:order-2" data-reveal="right">
+					<TeamMemberCard
+						photo={members[1].photo}
+						name={members[1].name}
+						width={members[1].width}
+						height={members[1].height}
+						class="shadow-[0_32px_80px_-40px_var(--color-secondary-500)]"
+					/>
+				</div>
+				<div class="lg:order-1">
+					<TeamMemberInfo
+						name={members[1].name}
+						role={members[1].role}
+						tags={members[1].tags}
+						description={members[1].description}
+						quote={members[1].quote}
+					/>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-16 text-center" data-reveal>
+			<Button href="#contacto" arrow>Hablemos de tu proyecto</Button>
+		</div>
 	</div>
 </section>

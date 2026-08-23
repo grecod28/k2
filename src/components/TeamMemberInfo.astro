@@ -1,0 +1,56 @@
+---
+interface Props {
+	name: string;
+	role: string;
+	tags?: string[];
+	description: string;
+	quote: string;
+}
+
+const { name, role, tags = [], description, quote } = Astro.props;
+---
+
+<div class="max-w-lg">
+	<h3
+		class="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
+		data-reveal
+		style="--reveal-delay: 100ms"
+	>
+		{name}
+	</h3>
+	<p class="mt-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-primary-300" data-reveal style="--reveal-delay: 180ms">
+		{role}
+	</p>
+
+	{
+		tags.length > 0 && (
+			<ul class="mt-5 flex flex-wrap gap-2" data-reveal style="--reveal-delay: 260ms">
+				{
+					tags.map((tag) => (
+						<li
+							class="rounded-full border border-border-strong bg-surface px-3 py-1 text-xs font-medium text-text-2"
+						>
+							{tag}
+						</li>
+					))
+				}
+			</ul>
+		)
+	}
+
+	<p
+		class="mt-6 text-sm leading-relaxed text-text-2 sm:text-base"
+		data-reveal
+		style="--reveal-delay: 340ms"
+	>
+		{description}
+	</p>
+
+	<blockquote
+		class="mt-6 border-l-2 border-gold-500 pl-4 text-base italic leading-relaxed text-text-2"
+		data-reveal
+		style="--reveal-delay: 420ms"
+	>
+		{quote}
+	</blockquote>
+</div>
