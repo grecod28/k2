@@ -61,9 +61,14 @@ const audienceWords = [
 		</div>
 
 		<div class="relative mx-auto w-full max-w-md" data-reveal="zoom" style="--reveal-delay: 200ms">
-			<div class="relative aspect-square" aria-hidden="true">
+			<div
+				class="relative aspect-square"
+				style="--card-size: min(13rem, 45%)"
+				aria-hidden="true"
+			>
 				<div
-					class="absolute left-0 top-0 w-52 rounded-2xl border border-border bg-surface p-5 shadow-xl"
+					class="absolute left-0 top-0 rounded-2xl border border-border bg-surface p-4 shadow-xl sm:p-5"
+					style="width: var(--card-size); height: var(--card-size);"
 				>
 					<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-2 text-gold-400">
 						<Icon name="home" size={20} />
@@ -77,8 +82,8 @@ const audienceWords = [
 				</div>
 
 				<div
-					class="absolute bottom-0 right-0 w-52 animate-float-soft rounded-2xl border border-primary-500/30 bg-surface p-5 shadow-xl"
-					style="animation-delay: 0.8s"
+					class="absolute bottom-0 right-0 rounded-2xl border border-primary-500/30 bg-surface p-4 shadow-xl sm:p-5"
+					style="width: var(--card-size); height: var(--card-size);"
 				>
 					<span class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary-500/40 bg-primary-500/10 text-primary-400">
 						<Icon name="home" size={20} />
@@ -91,10 +96,28 @@ const audienceWords = [
 					</p>
 				</div>
 
-				<div class="absolute left-[22%] top-[30%] w-[56%] rotate-[24deg]">
-					<div class="border-t border-dashed border-border-strong"></div>
+				<svg
+					class="absolute inset-0 h-full w-full"
+					viewBox="0 0 100 100"
+					preserveAspectRatio="none"
+					style="clip-path: polygon(var(--card-size) 0px, 100% 0px, 100% calc(100% - var(--card-size)), calc(100% - var(--card-size)) calc(100% - var(--card-size)), calc(100% - var(--card-size)) 100%, 0px 100%, 0px var(--card-size), var(--card-size) var(--card-size));"
+					aria-hidden="true"
+				>
+					<line
+						x1="0"
+						y1="0"
+						x2="100"
+						y2="100"
+						stroke="var(--color-border-strong)"
+						stroke-width="1"
+						stroke-dasharray="1.6 1.6"
+						vector-effect="non-scaling-stroke"
+					></line>
+				</svg>
+
+				<div class="pointer-events-none absolute inset-0" aria-hidden="true">
 					<span
-						class="dot-travel absolute -top-[3px] h-1.5 w-1.5 rounded-full bg-gold-400 shadow-[0_0_10px_var(--color-gold-400)]"
+						class="dot-travel absolute h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-400 shadow-[0_0_10px_var(--color-gold-400)]"
 					></span>
 				</div>
 
@@ -105,12 +128,6 @@ const audienceWords = [
 					Hecho a medida
 				</span>
 			</div>
-		</div>
-	</div>
-
-	<div class="relative mx-auto mt-16 max-w-6xl px-5 sm:px-8" data-reveal>
-		<div class="border-t border-border pt-8 opacity-60">
-			<Marquee items={audienceWords} outlined reverse duration={34} />
 		</div>
 	</div>
 </section>

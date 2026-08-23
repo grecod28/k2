@@ -239,10 +239,12 @@ body {
 
 @keyframes dot-travel {
   from {
-    left: 0%;
+    left: var(--card-size, 13rem);
+    top: var(--card-size, 13rem);
   }
   to {
-    left: 100%;
+    left: calc(100% - var(--card-size, 13rem));
+    top: calc(100% - var(--card-size, 13rem));
   }
 }
 
@@ -306,8 +308,10 @@ body {
 }
 
 .dot-travel {
+  left: var(--card-size, 13rem);
+  top: var(--card-size, 13rem);
   animation: dot-travel 3.6s ease-in-out infinite alternate;
-  will-change: left;
+  will-change: left, top;
 }
 
 @supports (animation-timeline: scroll()) {
