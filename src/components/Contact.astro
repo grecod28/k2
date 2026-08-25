@@ -257,52 +257,78 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 </section>
 
 <script>
+	type FormFieldElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+	interface ContactField {
+		id: string;
+		errorId: string;
+		element: FormFieldElement | null;
+		error: HTMLParagraphElement | null;
+	}
+
+	interface ContactPayload {
+		nombre: string;
+		email: string;
+		empresa: string;
+		servicio: string;
+		mensaje: string;
+	}
+
 	const CONTACT_ENDPOINT = '';
 
-	const form = document.getElementById('form-contacto');
-	const successPanel = document.getElementById('contacto-exito');
-	const formStatus = document.getElementById('estado-formulario');
-	const submitButton = form?.querySelector('button[type="submit"]');
-	const sendLabel = form?.querySelector('.label-enviar');
-	const loadingLabel = form?.querySelector('.label-enviando');
+	const form = document.getElementById('form-contacto') as HTMLFormElement | null;
+	const successPanel = document.getElementById('contacto-exito') as HTMLDivElement | null;
+	const formStatus = document.getElementById('estado-formulario') as HTMLParagraphElement | null;
+	const resetButton = document.getElementById('boton-otro-mensaje') as HTMLButtonElement | null;
+	const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
+	const sendLabel = form?.querySelector<HTMLElement>('.label-enviar') ?? null;
+	const loadingLabel = form?.querySelector<HTMLElement>('.label-enviando') ?? null;
 
-	const fields = [
+	const fieldIds = [
 		{ id: 'campo-nombre', errorId: 'error-nombre' },
 		{ id: 'campo-email', errorId: 'error-email' },
 		{ id: 'campo-servicio', errorId: 'error-servicio' },
 		{ id: 'campo-mensaje', errorId: 'error-mensaje' }
 	];
 
+	const fields: ContactField[] = fieldIds.map(({ id, errorId }) => ({
+		id,
+		errorId,
+		element: document.getElementById(id) as FormFieldElement | null,
+		error: document.getElementById(errorId) as HTMLParagraphElement | null
+	}));
+
 	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-	function setFieldError(field, message) {
-		const input = document.getElementById(field.id);
-		const error = document.getElementById(field.errorId);
-		if (!input || !error) return;
+	function setFieldError(field: ContactField, message: string): void {
+		if (!field.element || !field.error) return;
 
 		if (message) {
-			input.setAttribute('aria-invalid', 'true');
-			input.classList.add('border-error', 'focus:border-error', 'focus:ring-error/25');
-			error.textContent = message;
-			error.classList.remove('hidden');
+			field.element.setAttribute('aria-invalid', 'true');
+			field.element.classList.add('border-error', 'focus:border-error', 'focus:ring-error/25');
+			field.error.textContent = message;
+			field.error.classList.remove('hidden');
 		} else {
-			input.removeAttribute('aria-invalid');
-			input.classList.remove('border-error', 'focus:border-error', 'focus:ring-error/25');
-			error.classList.add('hidden');
-			error.textContent = '';
+			field.element.removeAttribute('aria-invalid');
+			field.element.classList.remove('border-error', 'focus:border-error', 'focus:ring-error/25');
+			field.error.classList.add('hidden');
+			field.error.textContent = '';
 		}
 	}
 
-	function validateField(field) {
-		const input = document.getElementById(field.id);
-		if (!input) return true;
+	function validateField(field: ContactField): boolean {
+		if (!field.element) return true;
 
-		const value = input.value.trim();
+		const value = field.element.value.trim();
 		let message = '';
 
 		if (!value) {
 			message = 'Este campo es obligatorio.';
-		} else if (input.type === 'email' && !emailPattern.test(value)) {
+		} else if (
+			field.element instanceof HTMLInputElement &&
+			field.element.type === 'email' &&
+			!emailPattern.test(value)
+		) {
 			message = 'Introduce un email válido.';
 		}
 
@@ -310,15 +336,21 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		return !message;
 	}
 
-	form?.addEventListener('input', (event) => {
-		const field = fields.find((f) => f.id === event.target.id);
+	function getValue(id: string): string {
+		const element = document.getElementById(id) as FormFieldElement | null;
+		return element?.value.trim() ?? '';
+	}
+
+	form?.addEventListener('input', (event: Event) => {
+		const target = event.target as HTMLElement | null;
+		const field = fields.find((f) => f.id === target?.id);
 		if (field) {
 			setFieldError(field, '');
 		}
 		formStatus?.classList.add('hidden');
 	});
 
-	async function sendContact(data) {
+	async function sendContact(data: ContactPayload): Promise<{ ok: boolean }> {
 		if (!CONTACT_ENDPOINT) {
 			await new Promise((resolve) => setTimeout(resolve, 900));
 			return { ok: true };
@@ -334,20 +366,20 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 			throw new Error(`Error ${response.status}`);
 		}
 
-		return response.json();
+		return (await response.json()) as { ok: boolean };
 	}
 
-	form?.addEventListener('submit', async (event) => {
+	form?.addEventListener('submit', async (event: SubmitEvent) => {
 		event.preventDefault();
 
 		let isValid = true;
-		let firstInvalid = null;
+		let firstInvalid: HTMLElement | null = null;
 
 		for (const field of fields) {
 			const valid = validateField(field);
 			if (!valid) {
 				isValid = false;
-				firstInvalid ??= document.getElementById(field.id);
+				firstInvalid ??= field.element;
 			}
 		}
 
@@ -362,12 +394,12 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		loadingLabel?.classList.add('flex');
 		formStatus?.classList.add('hidden');
 
-		const data = {
-			nombre: document.getElementById('campo-nombre').value.trim(),
-			email: document.getElementById('campo-email').value.trim(),
-			empresa: document.getElementById('campo-empresa').value.trim(),
-			servicio: document.getElementById('campo-servicio').value,
-			mensaje: document.getElementById('campo-mensaje').value.trim()
+		const data: ContactPayload = {
+			nombre: getValue('campo-nombre'),
+			email: getValue('campo-email'),
+			empresa: getValue('campo-empresa'),
+			servicio: getValue('campo-servicio'),
+			mensaje: getValue('campo-mensaje')
 		};
 
 		try {
@@ -377,7 +409,7 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		} catch {
 			if (formStatus) {
 				formStatus.textContent =
-					'No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a hola@k2studio.es.';
+					'No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a team.k2studio@gmail.com';
 				formStatus.classList.remove('hidden');
 			}
 		} finally {
@@ -388,9 +420,11 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		}
 	});
 
-	document.getElementById('boton-otro-mensaje')?.addEventListener('click', () => {
+	resetButton?.addEventListener('click', () => {
 		form?.reset();
-		form.hidden = false;
+		if (form) {
+			form.hidden = false;
+		}
 		successPanel?.classList.add('hidden');
 	});
 </script>

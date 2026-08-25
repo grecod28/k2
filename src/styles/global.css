@@ -237,17 +237,6 @@ body {
   }
 }
 
-@keyframes dot-travel {
-  from {
-    left: var(--card-size, 13rem);
-    top: var(--card-size, 13rem);
-  }
-  to {
-    left: calc(100% - var(--card-size, 13rem));
-    top: calc(100% - var(--card-size, 13rem));
-  }
-}
-
 .animate-float {
   animation: float 7s ease-in-out infinite;
 }
@@ -307,13 +296,6 @@ body {
   animation: scroll-hint 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
-.dot-travel {
-  left: var(--card-size, 13rem);
-  top: var(--card-size, 13rem);
-  animation: dot-travel 3.6s ease-in-out infinite alternate;
-  will-change: left, top;
-}
-
 @supports (animation-timeline: scroll()) {
   .parallax-slow {
     animation: parallax-slow linear both;
@@ -366,8 +348,7 @@ body {
   .animate-drift,
   .animate-spin-slow,
   .marquee-track,
-  .scroll-hint-line::after,
-  .dot-travel {
+  .scroll-hint-line::after {
     animation: none;
   }
 
