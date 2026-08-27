@@ -203,6 +203,16 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 						role="alert"
 					></p>
 
+					<input
+						type="checkbox"
+						name="botcheck"
+						id="campo-botcheck"
+						class="hidden"
+						tabindex="-1"
+						autocomplete="off"
+						aria-hidden="true"
+					/>
+
 					<Button type="submit" size="lg" class="mt-7 w-full sm:w-auto">
 						<span class="label-enviar flex items-center gap-2">
 							<Icon name="send" size={18} />
@@ -267,14 +277,18 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 	}
 
 	interface ContactPayload {
-		nombre: string;
+		access_key: string;
+		subject: string;
+		name: string;
 		email: string;
+		message: string;
 		empresa: string;
 		servicio: string;
-		mensaje: string;
+		botcheck: boolean;
 	}
 
-	const CONTACT_ENDPOINT = '';
+	const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+	const WEB3FORMS_ACCESS_KEY = '2414150c-a18d-4989-ad69-ec20bedeedd5';
 
 	const form = document.getElementById('form-contacto') as HTMLFormElement | null;
 	const successPanel = document.getElementById('contacto-exito') as HTMLDivElement | null;
@@ -350,23 +364,23 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		formStatus?.classList.add('hidden');
 	});
 
-	async function sendContact(data: ContactPayload): Promise<{ ok: boolean }> {
-		if (!CONTACT_ENDPOINT) {
-			await new Promise((resolve) => setTimeout(resolve, 900));
-			return { ok: true };
-		}
-
-		const response = await fetch(CONTACT_ENDPOINT, {
+	async function sendContact(data: ContactPayload): Promise<{ success: boolean }> {
+		const response = await fetch(WEB3FORMS_ENDPOINT, {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
 			body: JSON.stringify(data)
 		});
 
-		if (!response.ok) {
-			throw new Error(`Error ${response.status}`);
+		const result = (await response.json()) as { success: boolean; message?: string };
+
+		if (!response.ok || !result.success) {
+			throw new Error(result.message ?? `Error ${response.status}`);
 		}
 
-		return (await response.json()) as { ok: boolean };
+		return result;
 	}
 
 	form?.addEventListener('submit', async (event: SubmitEvent) => {
@@ -394,12 +408,17 @@ const labelClasses = 'mb-2 block text-sm font-medium text-text';
 		loadingLabel?.classList.add('flex');
 		formStatus?.classList.add('hidden');
 
+		const botcheckInput = document.getElementById('campo-botcheck') as HTMLInputElement | null;
+
 		const data: ContactPayload = {
-			nombre: getValue('campo-nombre'),
+			access_key: WEB3FORMS_ACCESS_KEY,
+			subject: `Nuevo mensaje de ${getValue('campo-nombre') || 'la web de K2 Studio'} — ${getValue('campo-servicio') || 'sin servicio indicado'}`,
+			name: getValue('campo-nombre'),
 			email: getValue('campo-email'),
+			message: getValue('campo-mensaje'),
 			empresa: getValue('campo-empresa'),
 			servicio: getValue('campo-servicio'),
-			mensaje: getValue('campo-mensaje')
+			botcheck: botcheckInput?.checked ?? false
 		};
 
 		try {
