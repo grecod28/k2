@@ -1,449 +1,512 @@
 ---
-import Icon from './Icon.astro';
-import Button from './Button.astro';
-import SectionHeading from './SectionHeading.astro';
+import Icon from "./Icon.astro";
+import Button from "./Button.astro";
+import SectionHeading from "./SectionHeading.astro";
 
 const contactInfo = [
-	{
-		icon: 'mail',
-		label: 'Email',
-		value: 'team.k2studio@gmail.com',
-		href: 'mailto:team.k2studio@gmail.com'
-	},
-	{
-		icon: 'phone',
-		label: 'Teléfono',
-		value: '+34 699 84 92 87',
-		href: 'tel:+34699849287'
-	},
-	{
-		icon: 'map-pin',
-		label: 'Oficina',
-		value: 'Santiago, España',
-		href: null
-	}
+  {
+    icon: "mail",
+    label: "Email",
+    value: "team.k2studio@gmail.com",
+    href: "mailto:team.k2studio@gmail.com",
+  },
+  {
+    icon: "phone",
+    label: "Teléfono",
+    value: "+34 699 84 92 87",
+    href: "tel:+34699849287",
+  },
+  {
+    icon: "map-pin",
+    label: "Oficina",
+    value: "Santiago, España",
+    href: null,
+  },
 ];
 
 const socials = [
-	// { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/k2studio' }, en un futuro linkedin
-	//{ icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/k2_santiago' },
+  // { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/k2studio' }, en un futuro linkedin
+  //{ icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/k2_santiago' },
 ];
 
 const serviceOptions = [
-	'Estrategia digital',
-	'SEO',
-	'Publicidad online',
-	'Social Media',
-	'Branding',
-	'Desarrollo web',
-	'Analítica y optimización',
-	'No lo tengo claro'
+  "Estrategia digital",
+  "SEO",
+  "Publicidad online",
+  "Social Media",
+  "Branding",
+  "Desarrollo web",
+  "Analítica y optimización",
+  "No lo tengo claro",
 ];
 
 const fieldClasses =
-	'w-full rounded-xl border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-3 transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25';
-const labelClasses = 'mb-2 block text-sm font-medium text-text';
+  "w-full rounded-xl border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-3 transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25";
+const labelClasses = "mb-2 block text-sm font-medium text-text";
 ---
 
 <section id="contacto" class="relative py-24 lg:py-32">
-	<div class="mx-auto grid max-w-6xl gap-16 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-		<div>
-			<SectionHeading
-				eyebrow="Contacto"
-				description="Escríbenos y te respondemos en menos de 24 horas laborables."
-			>
-				Hablemos de tu proyecto
-			</SectionHeading>
+  <div class="mx-auto grid max-w-6xl gap-16 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+    <div>
+      <SectionHeading
+        eyebrow="Contacto"
+        description="Escríbenos y te respondemos en menos de 24 horas laborables."
+      >
+        Hablemos de tu proyecto
+      </SectionHeading>
 
-			<ul class="mt-10 space-y-4">
-				{
-					contactInfo.map((item, i) => (
-						<li data-reveal style={`--reveal-delay: ${i * 90}ms`}>
-							{item.href ? (
-								<a
-									href={item.href}
-									class="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-all duration-300 hover:border-border-strong hover:bg-surface-2"
-								>
-									<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
-										<Icon name={item.icon} size={19} />
-									</span>
-									<span>
-										<span class="block text-xs uppercase tracking-wider text-text-3">
-											{item.label}
-										</span>
-										<span class="mt-0.5 block text-sm font-medium text-text transition-colors group-hover:text-primary-300">
-											{item.value}
-										</span>
-									</span>
-								</a>
-							) : (
-								<div class="flex items-center gap-4 rounded-xl border border-border bg-surface p-4">
-									<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
-										<Icon name={item.icon} size={19} />
-									</span>
-									<span>
-										<span class="block text-xs uppercase tracking-wider text-text-3">
-											{item.label}
-										</span>
-										<span class="mt-0.5 block text-sm font-medium text-text">
-											{item.value}
-										</span>
-									</span>
-								</div>
-							)}
-						</li>
-					))
-				}
-			</ul>
+      <ul class="mt-10 space-y-4">
+        {contactInfo.map((item, i) => (
+          <li data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            {item.href ? (
+              <a
+                href={item.href}
+                class="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-all duration-300 hover:border-border-strong hover:bg-surface-2"
+              >
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+                  <Icon name={item.icon} size={19} />
+                </span>
+                <span>
+                  <span class="block text-xs uppercase tracking-wider text-text-3">
+                    {item.label}
+                  </span>
+                  <span class="mt-0.5 block text-sm font-medium text-text transition-colors group-hover:text-primary-300">
+                    {item.value}
+                  </span>
+                </span>
+              </a>
+            ) : (
+              <div class="flex items-center gap-4 rounded-xl border border-border bg-surface p-4">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+                  <Icon name={item.icon} size={19} />
+                </span>
+                <span>
+                  <span class="block text-xs uppercase tracking-wider text-text-3">
+                    {item.label}
+                  </span>
+                  <span class="mt-0.5 block text-sm font-medium text-text">
+                    {item.value}
+                  </span>
+                </span>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
 
-			<div class="mt-10" data-reveal style="--reveal-delay: 300ms">
-				<p class="text-sm font-medium text-text-3">Síguenos</p>
-				<ul class="mt-3 flex gap-3">
-					{
-						socials.map((social) => (
-							<li>
-								<a
-									href={social.href}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={social.label}
-									class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
-								>
-									<Icon name={social.icon} size={19} />
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-		</div>
+      <div class="mt-10" data-reveal style="--reveal-delay: 300ms">
+        <p class="text-sm font-medium text-text-3">Síguenos</p>
+        <ul class="mt-3 flex gap-3">
+          {socials.map((social) => (
+            <li>
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
+              >
+                <Icon name={social.icon} size={19} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
 
-		<div data-reveal style="--reveal-delay: 150ms">
-			<div class="rounded-2xl border border-border bg-surface p-6 sm:p-9">
-				<form id="form-contacto" novalidate>
-					<div class="grid gap-5 sm:grid-cols-2">
-						<div>
-							<label for="campo-nombre" class={labelClasses}>
-								Nombre <span class="text-primary-400" aria-hidden="true">*</span>
-							</label>
-							<input
-								id="campo-nombre"
-								name="nombre"
-								type="text"
-								autocomplete="name"
-								required
-								class={`${fieldClasses}`}
-							/>
-							<p id="error-nombre" class="mt-2 hidden text-sm text-error" role="alert"></p>
-						</div>
-						<div>
-							<label for="campo-email" class={labelClasses}>
-								Email <span class="text-primary-400" aria-hidden="true">*</span>
-							</label>
-							<input
-								id="campo-email"
-								name="email"
-								type="email"
-								autocomplete="email"
-								required
-								class={`${fieldClasses}`}
-							/>
-							<p id="error-email" class="mt-2 hidden text-sm text-error" role="alert"></p>
-						</div>
-					</div>
+    <div data-reveal style="--reveal-delay: 150ms">
+      <div class="rounded-2xl border border-border bg-surface p-6 sm:p-9">
+        <form id="form-contacto" novalidate>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="campo-nombre" class={labelClasses}>
+                Nombre{" "}
+                <span class="text-primary-400" aria-hidden="true">
+                  *
+                </span>
+              </label>
+              <input
+                id="campo-nombre"
+                name="nombre"
+                type="text"
+                autocomplete="name"
+                required
+                class={`${fieldClasses}`}
+              />
+              <p
+                id="error-nombre"
+                class="mt-2 hidden text-sm text-error"
+                role="alert"
+              ></p>
+            </div>
+            <div>
+              <label for="campo-email" class={labelClasses}>
+                Email{" "}
+                <span class="text-primary-400" aria-hidden="true">
+                  *
+                </span>
+              </label>
+              <input
+                id="campo-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                class={`${fieldClasses}`}
+              />
+              <p
+                id="error-email"
+                class="mt-2 hidden text-sm text-error"
+                role="alert"
+              ></p>
+            </div>
+          </div>
 
-					<div class="mt-5">
-						<label for="campo-empresa" class={labelClasses}>
-							Empresa <span class="text-text-3" aria-hidden="true">(opcional)</span>
-						</label>
-						<input
-							id="campo-empresa"
-							name="empresa"
-							type="text"
-							autocomplete="organization"
-							class={`${fieldClasses}`}
-						/>
-					</div>
+          <div class="mt-5">
+            <label for="campo-empresa" class={labelClasses}>
+              Empresa{" "}
+              <span class="text-text-3" aria-hidden="true">
+                (opcional)
+              </span>
+            </label>
+            <input
+              id="campo-empresa"
+              name="empresa"
+              type="text"
+              autocomplete="organization"
+              class={`${fieldClasses}`}
+            />
+          </div>
 
-					<div class="mt-5">
-						<label for="campo-servicio" class={labelClasses}>
-							Servicio de interés{' '}
-							<span class="text-primary-400" aria-hidden="true">*</span>
-						</label>
-						<select id="campo-servicio" name="servicio" required class={`${fieldClasses}`}>
-							<option value="" disabled selected>
-								Selecciona un servicio
-							</option>
-							{
-								serviceOptions.map((option) => (
-									<option value={option}>{option}</option>
-								))
-							}
-						</select>
-						<p id="error-servicio" class="mt-2 hidden text-sm text-error" role="alert"></p>
-					</div>
+          <div class="mt-5">
+            <label for="campo-servicio" class={labelClasses}>
+              Servicio de interés{" "}
+              <span class="text-primary-400" aria-hidden="true">
+                *
+              </span>
+            </label>
+            <select
+              id="campo-servicio"
+              name="servicio"
+              required
+              class={`${fieldClasses}`}
+            >
+              <option value="" disabled selected>
+                Selecciona un servicio
+              </option>
+              {serviceOptions.map((option) => (
+                <option value={option}>{option}</option>
+              ))}
+            </select>
+            <p
+              id="error-servicio"
+              class="mt-2 hidden text-sm text-error"
+              role="alert"
+            ></p>
+          </div>
 
-					<div class="mt-5">
-						<label for="campo-mensaje" class={labelClasses}>
-							Mensaje <span class="text-primary-400" aria-hidden="true">*</span>
-						</label>
-						<textarea
-							id="campo-mensaje"
-							name="mensaje"
-							rows="5"
-							required
-							class={`${fieldClasses} resize-y`}
-						></textarea>
-						<p id="error-mensaje" class="mt-2 hidden text-sm text-error" role="alert"></p>
-					</div>
+          <div class="mt-5">
+            <label for="campo-mensaje" class={labelClasses}>
+              Mensaje{" "}
+              <span class="text-primary-400" aria-hidden="true">
+                *
+              </span>
+            </label>
+            <textarea
+              id="campo-mensaje"
+              name="mensaje"
+              rows="5"
+              required
+              class={`${fieldClasses} resize-y`}
+            ></textarea>
+            <p
+              id="error-mensaje"
+              class="mt-2 hidden text-sm text-error"
+              role="alert"
+            ></p>
+          </div>
 
-					<p
-						id="estado-formulario"
-						class="mt-5 hidden rounded-xl border border-error/40 bg-error/10 px-4 py-3 text-sm text-error"
-						role="alert"
-					></p>
+          <p
+            id="estado-formulario"
+            class="mt-5 hidden rounded-xl border border-error/40 bg-error/10 px-4 py-3 text-sm text-error"
+            role="alert"
+          ></p>
 
-					<input
-						type="checkbox"
-						name="botcheck"
-						id="campo-botcheck"
-						class="hidden"
-						tabindex="-1"
-						autocomplete="off"
-						aria-hidden="true"
-					/>
+          <input
+            type="checkbox"
+            name="botcheck"
+            id="campo-botcheck"
+            class="hidden"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
 
-					<Button type="submit" size="lg" class="mt-7 w-full sm:w-auto">
-						<span class="label-enviar flex items-center gap-2">
-							<Icon name="send" size={18} />
-							Enviar mensaje
-						</span>
-						<span class="label-enviando hidden items-center gap-2">
-							<svg
-								class="h-4 w-4 animate-spin"
-								viewBox="0 0 24 24"
-								fill="none"
-								aria-hidden="true"
-							>
-								<circle
-									class="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									stroke-width="4"
-								></circle>
-								<path
-									class="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"
-								></path>
-							</svg>
-							Enviando…
-						</span>
-					</Button>
-				</form>
+          <Button type="submit" size="lg" class="mt-7 w-full sm:w-auto">
+            <span class="label-enviar flex items-center gap-2">
+              <Icon name="send" size={18} />
+              Enviar mensaje
+            </span>
+            <span class="label-enviando hidden items-center gap-2">
+              <svg
+                class="h-4 w-4 animate-spin"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"
+                ></path>
+              </svg>
+              Enviando…
+            </span>
+          </Button>
+        </form>
 
-				<div id="contacto-exito" class="hidden py-8 text-center" role="status" aria-live="polite">
-					<span
-						class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-success/40 bg-success/10 text-success"
-					>
-						<Icon name="check" size={28} />
-					</span>
-					<h3 class="mt-6 font-display text-2xl font-bold tracking-tight text-text">
-						Mensaje enviado
-					</h3>
-					<p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-2">
-						Gracias por escribirnos. Hemos recibido tu mensaje y te responderemos en
-						menos de 24 horas laborables.
-					</p>
-					<Button variant="secondary" type="button" class="mt-8" id="boton-otro-mensaje">
-						Enviar otro mensaje
-					</Button>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div
+          id="contacto-exito"
+          class="hidden py-8 text-center"
+          role="status"
+          aria-live="polite"
+        >
+          <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-success/40 bg-success/10 text-success">
+            <Icon name="check" size={28} />
+          </span>
+          <h3 class="mt-6 font-display text-2xl font-bold tracking-tight text-text">
+            Mensaje enviado
+          </h3>
+          <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-text-2">
+            Gracias por escribirnos. Hemos recibido tu mensaje y te
+            responderemos en menos de 24 horas laborables.
+          </p>
+          <Button
+            variant="secondary"
+            type="button"
+            class="mt-8"
+            id="boton-otro-mensaje"
+          >
+            Enviar otro mensaje
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
-	type FormFieldElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+  type FormFieldElement =
+    HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-	interface ContactField {
-		id: string;
-		errorId: string;
-		element: FormFieldElement | null;
-		error: HTMLParagraphElement | null;
-	}
+  interface ContactField {
+    id: string;
+    errorId: string;
+    element: FormFieldElement | null;
+    error: HTMLParagraphElement | null;
+  }
 
-	interface ContactPayload {
-		access_key: string;
-		subject: string;
-		name: string;
-		email: string;
-		message: string;
-		empresa: string;
-		servicio: string;
-		botcheck: boolean;
-	}
+  interface ContactPayload {
+    access_key: string;
+    subject: string;
+    name: string;
+    email: string;
+    message: string;
+    empresa: string;
+    servicio: string;
+    botcheck: boolean;
+  }
 
-	const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
-	const WEB3FORMS_ACCESS_KEY = '2414150c-a18d-4989-ad69-ec20bedeedd5';
+  const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  const WEB3FORMS_ACCESS_KEY = "2414150c-a18d-4989-ad69-ec20bedeedd5";
 
-	const form = document.getElementById('form-contacto') as HTMLFormElement | null;
-	const successPanel = document.getElementById('contacto-exito') as HTMLDivElement | null;
-	const formStatus = document.getElementById('estado-formulario') as HTMLParagraphElement | null;
-	const resetButton = document.getElementById('boton-otro-mensaje') as HTMLButtonElement | null;
-	const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
-	const sendLabel = form?.querySelector<HTMLElement>('.label-enviar') ?? null;
-	const loadingLabel = form?.querySelector<HTMLElement>('.label-enviando') ?? null;
+  const form = document.getElementById(
+    "form-contacto",
+  ) as HTMLFormElement | null;
+  const successPanel = document.getElementById(
+    "contacto-exito",
+  ) as HTMLDivElement | null;
+  const formStatus = document.getElementById(
+    "estado-formulario",
+  ) as HTMLParagraphElement | null;
+  const resetButton = document.getElementById(
+    "boton-otro-mensaje",
+  ) as HTMLButtonElement | null;
+  const submitButton =
+    form?.querySelector<HTMLButtonElement>('button[type="submit"]') ?? null;
+  const sendLabel = form?.querySelector<HTMLElement>(".label-enviar") ?? null;
+  const loadingLabel =
+    form?.querySelector<HTMLElement>(".label-enviando") ?? null;
 
-	const fieldIds = [
-		{ id: 'campo-nombre', errorId: 'error-nombre' },
-		{ id: 'campo-email', errorId: 'error-email' },
-		{ id: 'campo-servicio', errorId: 'error-servicio' },
-		{ id: 'campo-mensaje', errorId: 'error-mensaje' }
-	];
+  const fieldIds = [
+    { id: "campo-nombre", errorId: "error-nombre" },
+    { id: "campo-email", errorId: "error-email" },
+    { id: "campo-servicio", errorId: "error-servicio" },
+    { id: "campo-mensaje", errorId: "error-mensaje" },
+  ];
 
-	const fields: ContactField[] = fieldIds.map(({ id, errorId }) => ({
-		id,
-		errorId,
-		element: document.getElementById(id) as FormFieldElement | null,
-		error: document.getElementById(errorId) as HTMLParagraphElement | null
-	}));
+  const fields: ContactField[] = fieldIds.map(({ id, errorId }) => ({
+    id,
+    errorId,
+    element: document.getElementById(id) as FormFieldElement | null,
+    error: document.getElementById(errorId) as HTMLParagraphElement | null,
+  }));
 
-	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-	function setFieldError(field: ContactField, message: string): void {
-		if (!field.element || !field.error) return;
+  function setFieldError(field: ContactField, message: string): void {
+    if (!field.element || !field.error) return;
 
-		if (message) {
-			field.element.setAttribute('aria-invalid', 'true');
-			field.element.classList.add('border-error', 'focus:border-error', 'focus:ring-error/25');
-			field.error.textContent = message;
-			field.error.classList.remove('hidden');
-		} else {
-			field.element.removeAttribute('aria-invalid');
-			field.element.classList.remove('border-error', 'focus:border-error', 'focus:ring-error/25');
-			field.error.classList.add('hidden');
-			field.error.textContent = '';
-		}
-	}
+    if (message) {
+      field.element.setAttribute("aria-invalid", "true");
+      field.element.classList.add(
+        "border-error",
+        "focus:border-error",
+        "focus:ring-error/25",
+      );
+      field.error.textContent = message;
+      field.error.classList.remove("hidden");
+    } else {
+      field.element.removeAttribute("aria-invalid");
+      field.element.classList.remove(
+        "border-error",
+        "focus:border-error",
+        "focus:ring-error/25",
+      );
+      field.error.classList.add("hidden");
+      field.error.textContent = "";
+    }
+  }
 
-	function validateField(field: ContactField): boolean {
-		if (!field.element) return true;
+  function validateField(field: ContactField): boolean {
+    if (!field.element) return true;
 
-		const value = field.element.value.trim();
-		let message = '';
+    const value = field.element.value.trim();
+    let message = "";
 
-		if (!value) {
-			message = 'Este campo es obligatorio.';
-		} else if (
-			field.element instanceof HTMLInputElement &&
-			field.element.type === 'email' &&
-			!emailPattern.test(value)
-		) {
-			message = 'Introduce un email válido.';
-		}
+    if (!value) {
+      message = "Este campo es obligatorio.";
+    } else if (
+      field.element instanceof HTMLInputElement &&
+      field.element.type === "email" &&
+      !emailPattern.test(value)
+    ) {
+      message = "Introduce un email válido.";
+    }
 
-		setFieldError(field, message);
-		return !message;
-	}
+    setFieldError(field, message);
+    return !message;
+  }
 
-	function getValue(id: string): string {
-		const element = document.getElementById(id) as FormFieldElement | null;
-		return element?.value.trim() ?? '';
-	}
+  function getValue(id: string): string {
+    const element = document.getElementById(id) as FormFieldElement | null;
+    return element?.value.trim() ?? "";
+  }
 
-	form?.addEventListener('input', (event: Event) => {
-		const target = event.target as HTMLElement | null;
-		const field = fields.find((f) => f.id === target?.id);
-		if (field) {
-			setFieldError(field, '');
-		}
-		formStatus?.classList.add('hidden');
-	});
+  form?.addEventListener("input", (event: Event) => {
+    const target = event.target as HTMLElement | null;
+    const field = fields.find((f) => f.id === target?.id);
+    if (field) {
+      setFieldError(field, "");
+    }
+    formStatus?.classList.add("hidden");
+  });
 
-	async function sendContact(data: ContactPayload): Promise<{ success: boolean }> {
-		const response = await fetch(WEB3FORMS_ENDPOINT, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify(data)
-		});
+  async function sendContact(
+    data: ContactPayload,
+  ): Promise<{ success: boolean }> {
+    const response = await fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-		const result = (await response.json()) as { success: boolean; message?: string };
+    const result = (await response.json()) as {
+      success: boolean;
+      message?: string;
+    };
 
-		if (!response.ok || !result.success) {
-			throw new Error(result.message ?? `Error ${response.status}`);
-		}
+    if (!response.ok || !result.success) {
+      throw new Error(result.message ?? `Error ${response.status}`);
+    }
 
-		return result;
-	}
+    return result;
+  }
 
-	form?.addEventListener('submit', async (event: SubmitEvent) => {
-		event.preventDefault();
+  form?.addEventListener("submit", async (event: SubmitEvent) => {
+    event.preventDefault();
 
-		let isValid = true;
-		let firstInvalid: HTMLElement | null = null;
+    let isValid = true;
+    let firstInvalid: HTMLElement | null = null;
 
-		for (const field of fields) {
-			const valid = validateField(field);
-			if (!valid) {
-				isValid = false;
-				firstInvalid ??= field.element;
-			}
-		}
+    for (const field of fields) {
+      const valid = validateField(field);
+      if (!valid) {
+        isValid = false;
+        firstInvalid ??= field.element;
+      }
+    }
 
-		if (!isValid) {
-			firstInvalid?.focus();
-			return;
-		}
+    if (!isValid) {
+      firstInvalid?.focus();
+      return;
+    }
 
-		submitButton?.setAttribute('disabled', '');
-		sendLabel?.classList.add('hidden');
-		loadingLabel?.classList.remove('hidden');
-		loadingLabel?.classList.add('flex');
-		formStatus?.classList.add('hidden');
+    submitButton?.setAttribute("disabled", "");
+    sendLabel?.classList.add("hidden");
+    loadingLabel?.classList.remove("hidden");
+    loadingLabel?.classList.add("flex");
+    formStatus?.classList.add("hidden");
 
-		const botcheckInput = document.getElementById('campo-botcheck') as HTMLInputElement | null;
+    const botcheckInput = document.getElementById(
+      "campo-botcheck",
+    ) as HTMLInputElement | null;
 
-		const data: ContactPayload = {
-			access_key: WEB3FORMS_ACCESS_KEY,
-			subject: `Nuevo mensaje de ${getValue('campo-nombre') || 'la web de K2 Studio'} — ${getValue('campo-servicio') || 'sin servicio indicado'}`,
-			name: getValue('campo-nombre'),
-			email: getValue('campo-email'),
-			message: getValue('campo-mensaje'),
-			empresa: getValue('campo-empresa'),
-			servicio: getValue('campo-servicio'),
-			botcheck: botcheckInput?.checked ?? false
-		};
+    const data: ContactPayload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Nuevo mensaje de ${getValue("campo-nombre") || "la web de K2 Studio"} — ${getValue("campo-servicio") || "sin servicio indicado"}`,
+      name: getValue("campo-nombre"),
+      email: getValue("campo-email"),
+      message: getValue("campo-mensaje"),
+      empresa: getValue("campo-empresa"),
+      servicio: getValue("campo-servicio"),
+      botcheck: botcheckInput?.checked ?? false,
+    };
 
-		try {
-			await sendContact(data);
-			form.hidden = true;
-			successPanel?.classList.remove('hidden');
-		} catch {
-			if (formStatus) {
-				formStatus.textContent =
-					'No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a team.k2studio@gmail.com';
-				formStatus.classList.remove('hidden');
-			}
-		} finally {
-			submitButton?.removeAttribute('disabled');
-			sendLabel?.classList.remove('hidden');
-			loadingLabel?.classList.add('hidden');
-			loadingLabel?.classList.remove('flex');
-		}
-	});
+    try {
+      await sendContact(data);
+      form.hidden = true;
+      successPanel?.classList.remove("hidden");
+    } catch {
+      if (formStatus) {
+        formStatus.textContent =
+          "No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a team.k2studio@gmail.com";
+        formStatus.classList.remove("hidden");
+      }
+    } finally {
+      submitButton?.removeAttribute("disabled");
+      sendLabel?.classList.remove("hidden");
+      loadingLabel?.classList.add("hidden");
+      loadingLabel?.classList.remove("flex");
+    }
+  });
 
-	resetButton?.addEventListener('click', () => {
-		form?.reset();
-		if (form) {
-			form.hidden = false;
-		}
-		successPanel?.classList.add('hidden');
-	});
+  resetButton?.addEventListener("click", () => {
+    form?.reset();
+    if (form) {
+      form.hidden = false;
+    }
+    successPanel?.classList.add("hidden");
+  });
 </script>
