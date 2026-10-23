@@ -5,32 +5,37 @@ import Button from "./Button.astro";
 const words = ["Convertimos", "tu", "presencia", "digital", "en"];
 
 const chips = [
-  { icon: "search", label: "SEO" },
-  { icon: "megaphone", label: "Ads" },
-  { icon: "pen-tool", label: "Branding" },
+  { icon: "search", label: "SEO", accent: "secondary" },
+  { icon: "megaphone", label: "Ads", accent: "primary" },
+  { icon: "pen-tool", label: "Branding", accent: "gold" },
 ];
+
+const trust = ["Sin permanencias", "Respuesta en 24 h", "Equipo senior"];
 ---
 
 <section id="inicio" class="relative overflow-hidden">
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute -top-40 right-[-12%] h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.16] blur-3xl animate-glow-pulse"></div>
     <div class="absolute bottom-[-30%] left-[-10%] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,var(--color-secondary-500),transparent_65%)] opacity-[0.12] blur-3xl animate-drift"></div>
-    <div class="absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,black,transparent)] bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:44px_44px]"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:44px_44px] opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,black,transparent)]"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent"></div>
   </div>
 
   <div class="relative mx-auto grid max-w-6xl gap-14 px-5 pb-20 pt-36 sm:px-8 md:pt-44 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:pb-28">
     <div>
       <div data-reveal>
-        <span class="inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-text-2">
+        <span class="inline-flex items-center gap-2.5 rounded-full border border-border bg-surface/80 px-4 py-1.5 text-xs font-medium text-text-2 backdrop-blur">
           <span class="relative flex h-2 w-2" aria-hidden="true">
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-60"></span>
             <span class="relative inline-flex h-2 w-2 rounded-full bg-secondary-400"></span>
           </span>
-          Agencia de marketing digitalns
+          Agencia de marketing digital
+          <span class="text-text-3">·</span>
+          <span class="text-text-3">Santiago</span>
         </span>
       </div>
 
-      <h1 class="mt-7 font-display text-[2.6rem] font-bold leading-[1.06] tracking-tight text-text sm:text-6xl xl:text-[4.6rem]">
+      <h1 class="section-title mt-7 font-display text-[2.6rem] font-bold leading-[1.06] tracking-tight text-text sm:text-6xl xl:text-[4.6rem]">
         {words.map((word, i) => (
           <span
             class="hero-word mr-[0.28em]"
@@ -40,7 +45,7 @@ const chips = [
           </span>
         ))}
         <span
-          class="hero-word inline-block bg-gradient-to-r from-primary-400 to-primary-300 bg-clip-text text-transparent"
+          class="hero-word inline-block text-gradient"
           style="--word-delay: 650ms"
         >
           crecimiento real.
@@ -68,6 +73,21 @@ const chips = [
           Conócenos
         </Button>
       </div>
+
+      <ul
+        class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text-2"
+        data-reveal
+        style="--reveal-delay: 1100ms"
+      >
+        {trust.map((item) => (
+          <li class="flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-secondary-500/10 text-secondary-400">
+              <Icon name="check" size={12} />
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
 
     <div
@@ -76,13 +96,17 @@ const chips = [
       style="--reveal-delay: 300ms"
     >
       <div class="parallax-slow relative aspect-square" aria-hidden="true">
-        <div class="absolute inset-0 rounded-full border border-dashed border-border-strong animate-spin-slow"></div>
-        <div class="absolute inset-[8%] rounded-full border border-border bg-[radial-gradient(circle_at_30%_25%,var(--color-surface-2),var(--color-bg)_70%)]"></div>
-        <div class="absolute inset-[22%] rounded-full border border-border-strong bg-[radial-gradient(circle_at_60%_40%,var(--color-secondary-500),transparent_70%)] opacity-[0.1]"></div>
-        <div class="absolute inset-[30%] rounded-full border border-border bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_75%)] opacity-[0.14] animate-glow-pulse"></div>
-        <div class="absolute inset-[44%] rounded-full bg-primary-500/90 shadow-[0_0_60px_-8px_var(--color-primary-500)]"></div>
+        <div class="absolute inset-0 rounded-full border border-dashed border-border-strong/80 animate-spin-slow"></div>
+        <div class="absolute inset-[7%] rounded-full border border-border bg-[radial-gradient(circle_at_30%_25%,var(--color-surface-2),var(--color-bg)_70%)] shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05)]"></div>
+        <div class="absolute inset-[21%] rounded-full border border-border-strong bg-[radial-gradient(circle_at_60%_40%,var(--color-secondary-500),transparent_70%)] opacity-[0.12]"></div>
+        <div class="absolute inset-[30%] rounded-full border border-border bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_75%)] opacity-[0.16] animate-glow-pulse"></div>
+        <div class="absolute inset-[41%] flex items-center justify-center rounded-full border border-primary-500/40 bg-bg/80 shadow-[0_0_60px_-8px_var(--color-primary-500)] backdrop-blur">
+          <span class="font-display text-3xl font-bold tracking-tight text-gradient sm:text-4xl">
+            K2
+          </span>
+        </div>
 
-        <div class="absolute left-[4%] top-[16%] flex animate-float items-center gap-2.5 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg">
+        <div class="absolute left-[0%] top-[14%] flex animate-float items-center gap-2.5 rounded-xl border border-border bg-surface/90 px-4 py-3 shadow-lg backdrop-blur">
           <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary-500/10 text-secondary-400">
             <Icon name={chips[0].icon} size={18} />
           </span>
@@ -90,7 +114,7 @@ const chips = [
         </div>
 
         <div
-          class="absolute right-0 top-[38%] flex animate-float-soft items-center gap-2.5 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg"
+          class="absolute right-0 top-[38%] flex animate-float-soft items-center gap-2.5 rounded-xl border border-border bg-surface/90 px-4 py-3 shadow-lg backdrop-blur"
           style="animation-delay: 1.2s"
         >
           <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
@@ -100,7 +124,7 @@ const chips = [
         </div>
 
         <div
-          class="absolute bottom-[12%] left-[10%] flex animate-float items-center gap-2.5 rounded-xl border border-border bg-surface px-4 py-3 shadow-lg"
+          class="absolute bottom-[10%] left-[8%] flex animate-float items-center gap-2.5 rounded-xl border border-border bg-surface/90 px-4 py-3 shadow-lg backdrop-blur"
           style="animation-delay: 2.1s"
         >
           <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-500/10 text-gold-400">
@@ -108,6 +132,10 @@ const chips = [
           </span>
           <span class="text-sm font-semibold text-text">{chips[2].label}</span>
         </div>
+
+        <span class="absolute right-[6%] top-[6%] rounded-full border border-border bg-surface/90 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-text-3 backdrop-blur">
+          + Crecimiento
+        </span>
       </div>
     </div>
   </div>

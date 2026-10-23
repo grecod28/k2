@@ -16,7 +16,7 @@ const members = [
     quote: "Cada marca necesita una estrategia. Cada estrategia, una historia.",
   },
   {
-    photo: "/images/founder_2.png",
+    photo: "/images/founder_2.jpg",
     width: 263,
     height: 320,
     name: "Santiago Greco",
@@ -46,17 +46,21 @@ const members = [
 
   <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
     <div class="mx-auto max-w-2xl text-center" data-reveal>
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400">
-        Equipo
-      </p>
-      <h2 class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-        Dos mentes, <span class="text-secondary-400">una visión</span>
+      <p class="eyebrow justify-center">Equipo</p>
+      <h2 class="section-title mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+        Dos mentes, <span class="text-gradient">una visión</span>
       </h2>
+      <p class="mx-auto mt-5 max-w-lg text-base leading-relaxed text-text-2">
+        Perfiles complementarios que se sientan en la misma mesa que tú.
+      </p>
     </div>
 
     <div class="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-        <div data-reveal="left">
+        <div
+          class="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
+          data-reveal="left"
+        >
           <TeamMemberCard
             photo={members[0].photo}
             name={members[0].name}
@@ -65,7 +69,7 @@ const members = [
             class="shadow-[0_32px_80px_-40px_var(--color-primary-500)]"
           />
         </div>
-        <div>
+        <div class="mx-auto w-full max-w-lg lg:mx-0">
           <TeamMemberInfo
             name={members[0].name}
             role={members[0].role}
@@ -77,7 +81,10 @@ const members = [
       </div>
 
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-        <div class="lg:order-2" data-reveal="right">
+        <div
+          class="mx-auto w-full max-w-md lg:order-2 lg:mx-0 lg:max-w-none"
+          data-reveal="right"
+        >
           <TeamMemberCard
             photo={members[1].photo}
             name={members[1].name}
@@ -86,7 +93,7 @@ const members = [
             class="shadow-[0_32px_80px_-40px_var(--color-secondary-500)]"
           />
         </div>
-        <div class="lg:order-1">
+        <div class="mx-auto w-full max-w-lg lg:order-1 lg:mx-0">
           <TeamMemberInfo
             name={members[1].name}
             role={members[1].role}

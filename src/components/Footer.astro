@@ -3,6 +3,7 @@ import Icon from "./Icon.astro";
 
 const navigation = [
   { label: "Inicio", href: "#inicio" },
+  { label: "Marcas", href: "#marcas" },
   { label: "Servicios", href: "#servicios" },
   { label: "Equipo", href: "#equipo" },
   { label: "Proceso", href: "#proceso" },
@@ -27,41 +28,71 @@ const socials = [
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border bg-surface">
-  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+<footer class="relative overflow-hidden border-t border-border bg-surface">
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"
+    aria-hidden="true"
+  ></div>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -bottom-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.05] blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-5 py-16 sm:px-8">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
       <div>
-        <a href="#inicio" class="flex items-center gap-3">
-          <img
-            src="/images/k2_studio_logo.jpg"
-            alt=""
-            width="32"
-            height="32"
-            class="h-8 w-8 rounded-lg object-cover"
-          />
-          <span class="font-display text-lg font-bold tracking-tight text-text">
-            K2 Studio
+        <a
+          href="#inicio"
+          class="group/logo flex w-fit items-center gap-3"
+          aria-label="K2 Studio — volver al inicio"
+        >
+          <span class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10 transition-transform duration-300 group-hover/logo:scale-105">
+            <img
+              src="/images/k2_studio_logo.jpg"
+              alt=""
+              width="36"
+              height="36"
+              class="h-full w-full object-cover"
+            />
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-lg font-bold tracking-tight text-text">
+              K2 Studio
+            </span>
+            <span class="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.2em] text-text-3">
+              Marketing digital
+            </span>
           </span>
         </a>
         <p class="mt-5 max-w-xs text-sm leading-relaxed text-text-2">
           Agencia de marketing digital. Estrategia, SEO, publicidad y desarrollo
           web orientados a un único objetivo: tu crecimiento.
         </p>
-        <ul class="mt-6 flex gap-3">
-          {socials.map((social) => (
-            <li>
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                class="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
-              >
-                <Icon name={social.icon} size={18} />
-              </a>
-            </li>
-          ))}
-        </ul>
+
+        <p class="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-bg/50 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-text-2">
+          <span class="relative flex h-1.5 w-1.5" aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-60"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-secondary-400"></span>
+          </span>
+          Disponibles para nuevos proyectos
+        </p>
+
+        {socials.length > 0 && (
+          <ul class="mt-6 flex gap-3">
+            {socials.map((social) => (
+              <li>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
+                >
+                  <Icon name={social.icon} size={18} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <nav aria-label="Navegación del pie">
@@ -73,7 +104,7 @@ const year = new Date().getFullYear();
             <li>
               <a
                 href={item.href}
-                class="text-sm text-text-2 transition-colors hover:text-primary-300"
+                class="link-underline text-sm text-text-2 transition-colors hover:text-primary-300"
               >
                 {item.label}
               </a>
@@ -91,7 +122,7 @@ const year = new Date().getFullYear();
             <li>
               <a
                 href="#servicios"
-                class="text-sm text-text-2 transition-colors hover:text-primary-300"
+                class="link-underline text-sm text-text-2 transition-colors hover:text-primary-300"
               >
                 {service}
               </a>
@@ -108,7 +139,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href="mailto:team.k2studio@gmail.com"
-              class="transition-colors hover:text-primary-300"
+              class="link-underline transition-colors hover:text-primary-300"
             >
               team.k2studio@gmail.com
             </a>
@@ -116,7 +147,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href="tel:+34699849287"
-              class="transition-colors hover:text-primary-300"
+              class="link-underline transition-colors hover:text-primary-300"
             >
               +34 699 84 92 87
             </a>
@@ -126,9 +157,22 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="mt-14 flex flex-col gap-3 border-t border-border pt-8 text-sm text-text-3 sm:flex-row sm:items-center sm:justify-between">
+    <div class="mt-14 flex flex-col gap-4 border-t border-border pt-8 text-sm text-text-3 sm:flex-row sm:items-center sm:justify-between">
       <p>© {year} K2 Studio. Todos los derechos reservados.</p>
-      <p>Crecimiento medible, no promesas vacías.</p>
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
+        <p>Crecimiento medible, no promesas vacías.</p>
+        <a
+          href="#inicio"
+          class="group inline-flex w-fit items-center gap-1.5 whitespace-nowrap font-medium text-text-2 transition-colors hover:text-primary-300"
+        >
+          Volver arriba
+          <Icon
+            name="arrow-up-right"
+            size={14}
+            class="rotate-[-45deg] transition-transform duration-300 group-hover:-translate-y-0.5"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </footer>

@@ -41,7 +41,7 @@ const serviceOptions = [
 ];
 
 const fieldClasses =
-  "w-full rounded-xl border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-3 transition-colors duration-200 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25";
+  "w-full rounded-xl border border-border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-3 transition-colors duration-200 hover:border-border-strong focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/25";
 const labelClasses = "mb-2 block text-sm font-medium text-text";
 ---
 
@@ -61,23 +61,28 @@ const labelClasses = "mb-2 block text-sm font-medium text-text";
             {item.href ? (
               <a
                 href={item.href}
-                class="group flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-all duration-300 hover:border-border-strong hover:bg-surface-2"
+                class="spotlight group relative flex items-center gap-4 rounded-xl border border-border bg-surface p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-border-strong hover:bg-surface-2"
               >
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary-500/20 bg-primary-500/10 text-primary-400 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.05)]">
                   <Icon name={item.icon} size={19} />
                 </span>
-                <span>
+                <span class="min-w-0 flex-1">
                   <span class="block text-xs uppercase tracking-wider text-text-3">
                     {item.label}
                   </span>
-                  <span class="mt-0.5 block text-sm font-medium text-text transition-colors group-hover:text-primary-300">
+                  <span class="mt-0.5 block truncate text-sm font-medium text-text transition-colors group-hover:text-primary-300">
                     {item.value}
                   </span>
                 </span>
+                <Icon
+                  name="arrow-up-right"
+                  size={16}
+                  class="shrink-0 text-text-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                />
               </a>
             ) : (
               <div class="flex items-center gap-4 rounded-xl border border-border bg-surface p-4">
-                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-400">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-primary-500/20 bg-primary-500/10 text-primary-400">
                   <Icon name={item.icon} size={19} />
                 </span>
                 <span>
@@ -94,28 +99,67 @@ const labelClasses = "mb-2 block text-sm font-medium text-text";
         ))}
       </ul>
 
-      <div class="mt-10" data-reveal style="--reveal-delay: 300ms">
-        <p class="text-sm font-medium text-text-3">Síguenos</p>
-        <ul class="mt-3 flex gap-3">
-          {socials.map((social) => (
-            <li>
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
-              >
-                <Icon name={social.icon} size={19} />
-              </a>
-            </li>
-          ))}
-        </ul>
+      {socials.length > 0 && (
+        <div class="mt-10" data-reveal style="--reveal-delay: 300ms">
+          <p class="text-sm font-medium text-text-3">Síguenos</p>
+          <ul class="mt-3 flex gap-3">
+            {socials.map((social) => (
+              <li>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-text-2 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-500/50 hover:text-primary-300"
+                >
+                  <Icon name={social.icon} size={19} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div
+        class="mt-8 flex items-start gap-3 rounded-xl border border-border/70 bg-surface/50 p-4"
+        data-reveal
+        style="--reveal-delay: 360ms"
+      >
+        <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary-500/10 text-secondary-400">
+          <Icon name="shield-check" size={14} />
+        </span>
+        <p class="text-xs leading-relaxed text-text-2">
+          Tus datos solo se utilizan para responderte. Sin listas de correo ni
+          letra pequeña.
+        </p>
       </div>
     </div>
 
     <div data-reveal style="--reveal-delay: 150ms">
-      <div class="rounded-2xl border border-border bg-surface p-6 sm:p-9">
+      <div class="card-ring relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-9">
+        <span
+          class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500/70 to-transparent"
+          aria-hidden="true"
+        ></span>
+
+        <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-text-3">
+              Cuéntanos
+            </p>
+            <h3 class="mt-1 font-display text-xl font-semibold tracking-tight text-text">
+              Tu proyecto en dos minutos
+            </h3>
+          </div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-secondary-500/30 bg-secondary-500/5 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-secondary-300">
+            <span class="relative flex h-1.5 w-1.5" aria-hidden="true">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary-400 opacity-60"></span>
+              <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-secondary-400"></span>
+            </span>
+            Disponibles
+          </span>
+        </div>
+
         <form id="form-contacto" novalidate>
           <div class="grid gap-5 sm:grid-cols-2">
             <div>
@@ -271,6 +315,10 @@ const labelClasses = "mb-2 block text-sm font-medium text-text";
               Enviando…
             </span>
           </Button>
+
+          <p class="mt-4 text-center text-xs leading-relaxed text-text-3 sm:text-left">
+            Al enviar aceptas que te contactemos sobre tu proyecto.
+          </p>
         </form>
 
         <div

@@ -7,6 +7,7 @@ interface Props {
   reverse?: boolean;
   size?: "md" | "lg";
   outlined?: boolean;
+  fade?: boolean;
   class?: string;
 }
 
@@ -16,6 +17,7 @@ const {
   reverse = false,
   size = "md",
   outlined = false,
+  fade = true,
   class: className,
 } = Astro.props;
 
@@ -25,16 +27,21 @@ const sizes = {
 };
 
 const itemClass = [
-  "flex shrink-0 items-center gap-8 pr-8 font-display font-bold tracking-tight",
+  "flex shrink-0 items-center gap-8 pr-8 font-display font-bold tracking-tight transition-colors duration-300",
   sizes[size],
   outlined
     ? "text-transparent [-webkit-text-stroke:1px_var(--color-border-strong)]"
-    : "text-text-3",
+    : "text-text-3 hover:text-text-2",
 ].join(" ");
 ---
 
 <div
-  class={["marquee", reverse ? "marquee-reverse" : "", "select-none", className]
+  class={[
+    "marquee select-none",
+    fade ? "marquee-fade" : "",
+    reverse ? "marquee-reverse" : "",
+    className,
+  ]
     .filter(Boolean)
     .join(" ")}
 >
