@@ -1,51 +1,54 @@
 ---
-import Icon from './Icon.astro';
+import Icon from "./Icon.astro";
 
 interface Props {
-	icon: string;
-	title: string;
-	description: string;
-	index?: string;
-	featured?: boolean;
+  icon: string;
+  title: string;
+  description: string;
+  index?: string;
+  featured?: boolean;
 }
 
 const { icon, title, description, index, featured = false } = Astro.props;
 ---
 
-{
-	index && (
-		<span
-			class="absolute right-5 top-5 font-display text-sm font-semibold tracking-widest text-text-3"
-			aria-hidden="true"
-		>
-			{index}
-		</span>
-	)
-}
+{index && (
+  <span
+    class="absolute right-5 top-5 font-display text-sm font-semibold tracking-widest text-text-3/70 transition-colors duration-300 group-hover:text-text-2"
+    aria-hidden="true"
+  >
+    {index}
+  </span>
+)}
 <span
-	class={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 group-hover:-translate-y-0.5 ${
-		featured
-			? 'border-primary-500/40 bg-primary-500/10 text-primary-400'
-			: 'border-border bg-surface-2 text-primary-400 group-hover:border-primary-500/40 group-hover:bg-primary-500/10'
-	}`}
+  class={`relative flex h-12 w-12 items-center justify-center rounded-xl border shadow-[inset_0_1px_0_0_rgb(255_255_255/0.06)] transition-all duration-300 group-hover:-translate-y-0.5 ${
+    featured
+      ? "border-primary-500/40 bg-primary-500/10 text-primary-400"
+      : "border-border bg-surface-2 text-primary-400 group-hover:border-primary-500/40 group-hover:bg-primary-500/10 group-hover:shadow-[0_0_24px_-10px_var(--color-primary-500)]"
+  }`}
 >
-	<Icon name={icon} size={21} />
+  <Icon name={icon} size={21} />
 </span>
 <h3 class="mt-5 font-display text-lg font-semibold tracking-tight text-text">
-	{title}
+  {title}
 </h3>
-<p class="mt-1.5 text-sm text-text-2">
-	{description}
+<p class="mt-1.5 max-w-[26ch] text-sm leading-relaxed text-text-2">
+  {description}
 </p>
-{
-	featured && (
-		<span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-400 transition-colors group-hover:text-primary-300">
-			Cuéntanos tu caso
-			<Icon
-				name="arrow-up-right"
-				size={16}
-				class="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-			/>
-		</span>
-	)
-}
+{featured ? (
+  <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary-400 transition-colors group-hover:text-primary-300">
+    Cuéntanos tu caso
+    <Icon
+      name="arrow-up-right"
+      size={16}
+      class="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+    />
+  </span>
+) : (
+  <span
+    class="pointer-events-none absolute bottom-5 right-5 text-text-3 opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+    aria-hidden="true"
+  >
+    <Icon name="arrow-up-right" size={16} />
+  </span>
+)}

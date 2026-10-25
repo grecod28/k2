@@ -1,105 +1,244 @@
 ---
-import Icon from './Icon.astro';
-import Button from './Button.astro';
+import Icon from "./Icon.astro";
+import Button from "./Button.astro";
 
 const links = [
-	{ label: 'Servicios', href: '#servicios' },
-	{ label: 'Equipo', href: '#equipo' },
-	{ label: 'Proceso', href: '#proceso' },
-	{ label: 'Por qué nosotros', href: '#por-que' },
-	{ label: 'Contacto', href: '#contacto' }
+  { label: "Marcas", href: "#marcas", section: "marcas" },
+  { label: "Servicios", href: "#servicios", section: "servicios" },
+  { label: "Equipo", href: "#equipo", section: "equipo" },
+  { label: "Proceso", href: "#proceso", section: "proceso" },
+  { label: "Por qué nosotros", href: "#por-que", section: "por-que" },
+  { label: "Contacto", href: "#contacto", section: "contacto" },
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-bg/85 backdrop-blur-md">
-	<nav
-		class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8 md:h-20"
-		aria-label="Navegación principal"
-	>
-		<a href="#inicio" class="flex shrink-0 items-center gap-3">
-			<img
-				src="/images/k2_studio_logo.jpg"
-				alt=""
-				width="32"
-				height="32"
-				class="h-8 w-8 rounded-lg object-cover"
-			/>
-			<span class="font-display text-lg font-bold tracking-tight text-text">K2 Studio</span>
-		</a>
+<header
+  id="site-header"
+  class="site-header fixed inset-x-0 top-0 z-50 bg-bg/60 backdrop-blur-xl transition-[background-color,box-shadow] duration-300"
+>
+  <div
+    class="header-line pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border-strong/70 to-transparent opacity-60 transition-opacity duration-300"
+    aria-hidden="true"
+  ></div>
 
-		<ul class="hidden items-center gap-9 md:flex">
-			{
-				links.map((link) => (
-					<li>
-						<a
-							href={link.href}
-							class="relative py-2 text-sm font-medium text-text-2 transition-colors duration-200 after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary-500 after:transition-transform after:duration-300 hover:text-text hover:after:scale-x-100"
-						>
-							{link.label}
-						</a>
-					</li>
-				))
-			}
-		</ul>
+  <nav
+    class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8 md:h-20"
+    aria-label="Navegación principal"
+  >
+    <a
+      href="#inicio"
+      class="group/logo flex shrink-0 items-center gap-3"
+      aria-label="K2 Studio — ir al inicio"
+    >
+      <span class="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl ring-1 ring-white/10 transition-transform duration-300 group-hover/logo:scale-105">
+        <img
+          src="/images/k2_studio_logo.jpg"
+          alt=""
+          width="36"
+          height="36"
+          class="h-full w-full object-cover"
+        />
+      </span>
+      <span class="flex flex-col leading-none">
+        <span class="font-display text-lg font-bold tracking-tight text-text">
+          K2 Studio
+        </span>
+        <span class="mt-1 text-[0.6rem] font-medium uppercase tracking-[0.2em] text-text-3">
+          Marketing digital
+        </span>
+      </span>
+    </a>
 
-		<div class="hidden md:block">
-			<Button href="#contacto" arrow>Hablemos</Button>
-		</div>
+    <ul class="hidden items-center gap-7 lg:flex xl:gap-9">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="nav-link relative py-2 text-sm font-medium"
+            data-nav-link={link.section}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
 
-		<button
-			id="menu-toggle"
-			type="button"
-			class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-text transition-colors hover:border-border-strong md:hidden"
-			aria-expanded="false"
-			aria-controls="menu-movil"
-			aria-label="Abrir menú"
-		>
-			<Icon name="menu" size={22} class="menu-icon" />
-			<Icon name="x" size={22} class="menu-icon-close hidden" />
-		</button>
-	</nav>
+    <div class="hidden lg:block">
+      <Button href="#contacto" arrow>
+        Hablemos
+      </Button>
+    </div>
 
-	<div id="menu-movil" hidden class="border-t border-border bg-bg/95 backdrop-blur-md md:hidden">
-		<ul class="space-y-1 px-5 py-4">
-			{
-				links.map((link) => (
-					<li>
-						<a
-							href={link.href}
-							class="block rounded-lg px-4 py-3 text-base font-medium text-text-2 transition-colors hover:bg-surface hover:text-text"
-						>
-							{link.label}
-						</a>
-					</li>
-				))
-			}
-			<li class="pt-3">
-				<Button href="#contacto" arrow class="w-full">Hablemos</Button>
-			</li>
-		</ul>
-	</div>
+    <button
+      id="menu-toggle"
+      type="button"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface/80 text-text transition-colors hover:border-border-strong hover:bg-surface-2 lg:hidden"
+      aria-expanded="false"
+      aria-controls="menu-movil"
+      aria-label="Abrir menú"
+    >
+      <Icon name="menu" size={22} class="menu-icon" />
+      <Icon name="x" size={22} class="menu-icon-close hidden" />
+    </button>
+  </nav>
+
+  <div
+    id="menu-movil"
+    class="mobile-menu border-t border-border bg-bg/95 backdrop-blur-xl lg:hidden"
+    data-open="false"
+    aria-hidden="true"
+    inert
+  >
+    <ul class="space-y-1 px-5 py-4">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-text-2 transition-colors hover:bg-surface hover:text-text"
+          >
+            {link.label}
+            <Icon name="arrow-up-right" size={16} class="text-text-3" />
+          </a>
+        </li>
+      ))}
+      <li class="pt-3">
+        <Button href="#contacto" arrow class="w-full">
+          Hablemos
+        </Button>
+      </li>
+    </ul>
+  </div>
 </header>
 
+<style>
+  .nav-link {
+    color: var(--color-text-2);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-500),
+      var(--color-gold-400)
+    );
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-link:hover,
+  .nav-link.is-active {
+    color: var(--color-text);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .site-header.is-scrolled {
+    background-color: rgb(0 0 0 / 0.86);
+    box-shadow: 0 24px 50px -40px rgb(0 0 0 / 1);
+  }
+
+  .site-header.is-scrolled .header-line {
+    opacity: 1;
+  }
+
+  .mobile-menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+
+  .mobile-menu[data-open="true"] {
+    max-height: 34rem;
+    opacity: 1;
+  }
+</style>
+
 <script>
-	const toggle = document.getElementById('menu-toggle');
-	const menu = document.getElementById('menu-movil');
-	const menuIcon = toggle?.querySelector('.menu-icon');
-	const closeIcon = toggle?.querySelector('.menu-icon-close');
+  const header = document.getElementById("site-header");
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu-movil");
+  const menuIcon = toggle?.querySelector(".menu-icon");
+  const closeIcon = toggle?.querySelector(".menu-icon-close");
 
-	function setMenu(open) {
-		if (!toggle || !menu) return;
-		menu.hidden = !open;
-		toggle.setAttribute('aria-expanded', String(open));
-		toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-		menuIcon?.classList.toggle('hidden', open);
-		closeIcon?.classList.toggle('hidden', !open);
-	}
+  function setMenu(open: boolean) {
+    if (!toggle || !menu) return;
+    menu.dataset.open = String(open);
+    menu.setAttribute("aria-hidden", String(!open));
+    if (open) {
+      menu.removeAttribute("inert");
+    } else {
+      menu.setAttribute("inert", "");
+    }
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    menuIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
+  }
 
-	toggle?.addEventListener('click', () => {
-		setMenu(menu?.hidden ?? true);
-	});
+  toggle?.addEventListener("click", () => {
+    setMenu(menu?.dataset.open !== "true");
+  });
 
-	menu?.querySelectorAll('a').forEach((link) => {
-		link.addEventListener('click', () => setMenu(false));
-	});
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
+
+  window
+    .matchMedia("(min-width: 1024px)")
+    .addEventListener("change", (event) => {
+      if (event.matches) setMenu(false);
+    });
+
+  // Fondo del header al hacer scroll
+  function updateHeader() {
+    header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  }
+
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  // Sección activa en la navegación
+  const navLinks = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]"),
+  );
+
+  function setActive(section: string) {
+    navLinks.forEach((link) => {
+      link.classList.toggle("is-active", link.dataset.navLink === section);
+    });
+  }
+
+  const sections = navLinks
+    .map((link) => document.getElementById(link.dataset.navLink ?? ""))
+    .filter((section): section is HTMLElement => section !== null);
+
+  if (sections.length > 0) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+
+    sections.forEach((section) => spy.observe(section));
+  }
 </script>

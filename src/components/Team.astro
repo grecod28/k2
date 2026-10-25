@@ -1,102 +1,114 @@
 ---
-import TeamMemberCard from './TeamMemberCard.astro';
-import TeamMemberInfo from './TeamMemberInfo.astro';
-import Button from './Button.astro';
+import TeamMemberCard from "./TeamMemberCard.astro";
+import TeamMemberInfo from "./TeamMemberInfo.astro";
+import Button from "./Button.astro";
 
 const members = [
-	{
-		photo: '/images/founder_1.JPG',
-		width: 1583,
-		height: 1600,
-		name: 'Andrés Blanco Ferro',
-		role: 'Fundador · Director de estrategia',
-		tags: ['Desarrollo web', 'Marketing digital', 'Estrategia'],
-		description:
-			'Tecnología y marketing bajo un mismo criterio: que cada proyecto sume a tu negocio. De la idea al lanzamiento, todo pasa por una estrategia clara, sin intermediarios.',
-		quote: 'Menos ruido, más resultados.'
-	},
-	{
-		photo: '/images/founder_2.png',
-		width: 263,
-		height: 320,
-		name: 'Daniel Sabucedo Sequeiros',
-		role: 'Editor & Creador audiovisual',
-		tags: ['Edición', 'Vídeo', 'Branding'],
-		description:
-			'Convierte ideas en imágenes que cuentan historias. Grabación, edición y dirección audiovisual para marcas que quieren hacerse notar.',
-		quote: 'Una buena historia vende más que mil anuncios.'
-	}
+  {
+    photo: "/images/founder_1.JPG",
+    width: 1583,
+    height: 1600,
+    name: "Andrés Blanco Ferro",
+    role: "Fundador · Director de estrategia",
+    tags: ["Marketing digital", "Estrategia", "Edición", "Vídeo", "Branding"],
+    description:
+      "Une estrategia, marketing y creatividad audiovisual para construir marcas sólidas. Desde el posicionamiento y el branding hasta la producción y edición de vídeo, cada acción responde a un objetivo de negocio.",
+    quote: "Cada marca necesita una estrategia. Cada estrategia, una historia.",
+  },
+  {
+    photo: "/images/founder_2.jpg",
+    width: 263,
+    height: 320,
+    name: "Santiago Greco",
+    role: "Editor & Creador audiovisual",
+    tags: [
+      "Desarrollo web",
+      "Marketing digital",
+      "SEO",
+      "Publicidad online",
+      "Social Media",
+    ],
+    description:
+      "Combina desarrollo web y marketing digital para crear experiencias que atraen, posicionan y convierten. Desde webs optimizadas para SEO hasta campañas publicitarias y estrategias de redes sociales, conecta tecnología y crecimiento.",
+    quote: "Una web atrae. Una estrategia convierte.",
+  },
 ];
 ---
 
-<section id="equipo" class="relative overflow-hidden border-y border-border bg-surface py-24 lg:py-32">
-	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
-		<div
-			class="absolute left-[-8%] top-[10%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.08] blur-3xl"
-		></div>
-		<div
-			class="absolute bottom-[5%] right-[-8%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-secondary-500),transparent_70%)] opacity-[0.08] blur-3xl"
-		></div>
-	</div>
+<section
+  id="equipo"
+  class="relative overflow-hidden border-y border-border bg-surface py-24 lg:py-32"
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute left-[-8%] top-[10%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.08] blur-3xl"></div>
+    <div class="absolute bottom-[5%] right-[-8%] h-80 w-80 rounded-full bg-[radial-gradient(circle_at_center,var(--color-secondary-500),transparent_70%)] opacity-[0.08] blur-3xl"></div>
+  </div>
 
-	<div class="relative mx-auto max-w-6xl px-5 sm:px-8">
-		<div class="mx-auto max-w-2xl text-center" data-reveal>
-			<p class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400">
-				Equipo
-			</p>
-			<h2
-				class="mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
-			>
-				Dos mentes, <span class="text-secondary-400">una visión</span>
-			</h2>
-		</div>
+  <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <p class="eyebrow justify-center">Equipo</p>
+      <h2 class="section-title mt-4 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+        Dos mentes, <span class="text-gradient">una visión</span>
+      </h2>
+      <p class="mx-auto mt-5 max-w-lg text-base leading-relaxed text-text-2">
+        Perfiles complementarios que se sientan en la misma mesa que tú.
+      </p>
+    </div>
 
-		<div class="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
-			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-				<div data-reveal="left">
-					<TeamMemberCard
-						photo={members[0].photo}
-						name={members[0].name}
-						width={members[0].width}
-						height={members[0].height}
-						class="shadow-[0_32px_80px_-40px_var(--color-primary-500)]"
-					/>
-				</div>
-				<div>
-					<TeamMemberInfo
-						name={members[0].name}
-						role={members[0].role}
-						tags={members[0].tags}
-						description={members[0].description}
-						quote={members[0].quote}
-					/>
-				</div>
-			</div>
+    <div class="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+        <div
+          class="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
+          data-reveal="left"
+        >
+          <TeamMemberCard
+            photo={members[0].photo}
+            name={members[0].name}
+            width={members[0].width}
+            height={members[0].height}
+            class="shadow-[0_32px_80px_-40px_var(--color-primary-500)]"
+          />
+        </div>
+        <div class="mx-auto w-full max-w-lg lg:mx-0">
+          <TeamMemberInfo
+            name={members[0].name}
+            role={members[0].role}
+            tags={members[0].tags}
+            description={members[0].description}
+            quote={members[0].quote}
+          />
+        </div>
+      </div>
 
-			<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-				<div class="lg:order-2" data-reveal="right">
-					<TeamMemberCard
-						photo={members[1].photo}
-						name={members[1].name}
-						width={members[1].width}
-						height={members[1].height}
-						class="shadow-[0_32px_80px_-40px_var(--color-secondary-500)]"
-					/>
-				</div>
-				<div class="lg:order-1">
-					<TeamMemberInfo
-						name={members[1].name}
-						role={members[1].role}
-						tags={members[1].tags}
-						description={members[1].description}
-						quote={members[1].quote}
-					/>
-				</div>
-			</div>
-		</div>
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+        <div
+          class="mx-auto w-full max-w-md lg:order-2 lg:mx-0 lg:max-w-none"
+          data-reveal="right"
+        >
+          <TeamMemberCard
+            photo={members[1].photo}
+            name={members[1].name}
+            width={members[1].width}
+            height={members[1].height}
+            class="shadow-[0_32px_80px_-40px_var(--color-secondary-500)]"
+          />
+        </div>
+        <div class="mx-auto w-full max-w-lg lg:order-1 lg:mx-0">
+          <TeamMemberInfo
+            name={members[1].name}
+            role={members[1].role}
+            tags={members[1].tags}
+            description={members[1].description}
+            quote={members[1].quote}
+          />
+        </div>
+      </div>
+    </div>
 
-		<div class="mt-16 text-center" data-reveal>
-			<Button href="#contacto" arrow>Hablemos de tu proyecto</Button>
-		</div>
-	</div>
+    <div class="mt-16 text-center" data-reveal>
+      <Button href="#contacto" arrow>
+        Hablemos de tu proyecto
+      </Button>
+    </div>
+  </div>
 </section>

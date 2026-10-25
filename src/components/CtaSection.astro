@@ -1,50 +1,64 @@
 ---
-import Button from './Button.astro';
-import Marquee from './Marquee.astro';
+import Button from "./Button.astro";
+import Marquee from "./Marquee.astro";
 
-const marqueeWords = ['Hablemos', 'K2 Studio', 'Tu marca', 'Resultados'];
+const marqueeWords = ["Hablemos", "K2 Studio", "Tu marca", "Resultados"];
 ---
 
-<section class="relative overflow-hidden border-y border-border bg-surface">
-	<div
-		class="pointer-events-none absolute inset-0"
-		aria-hidden="true"
-	>
-		<div
-			class="absolute left-1/2 top-1/2 h-[24rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.12] blur-3xl"
-		></div>
-		<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 rotate-[-3deg] opacity-[0.05]">
-			<Marquee items={marqueeWords} size="lg" outlined duration={36} />
-		</div>
-	</div>
+<section class="relative py-20 lg:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div
+      class="card-ring relative overflow-hidden rounded-3xl border border-border bg-surface px-6 py-16 sm:px-10 lg:py-24"
+      data-reveal
+    >
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute left-1/2 top-1/2 h-[26rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_65%)] opacity-[0.14] blur-3xl"></div>
+        <div class="absolute left-0 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle_at_center,var(--color-gold-500),transparent_70%)] opacity-[0.12] blur-2xl"></div>
+        <div class="absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[radial-gradient(circle_at_center,var(--color-secondary-500),transparent_70%)] opacity-[0.1] blur-2xl"></div>
+        <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 rotate-[-3deg] opacity-[0.045]">
+          <Marquee items={marqueeWords} size="lg" outlined duration={36} />
+        </div>
+      </div>
 
-	<div class="relative mx-auto max-w-4xl px-5 py-20 text-center sm:px-8 lg:py-28">
-		<p
-			class="text-xs font-semibold uppercase tracking-[0.22em] text-primary-400"
-			data-reveal
-		>
-			¿Tienes un proyecto en mente?
-		</p>
-		<h2
-			class="mt-5 font-display text-3xl font-bold tracking-tight text-text sm:text-4xl lg:text-5xl lg:leading-[1.12]"
-			data-reveal
-			style="--reveal-delay: 100ms"
-		>
-			Hablemos.
-		</h2>
-		<p
-			class="mx-auto mt-4 max-w-md text-base text-text-2 sm:text-lg"
-			data-reveal
-			style="--reveal-delay: 200ms"
-		>
-			Cuéntanos qué quieres conseguir. Sin compromiso.
-		</p>
-		<div
-			class="mt-9 flex flex-wrap items-center justify-center gap-4"
-			data-reveal
-			style="--reveal-delay: 300ms"
-		>
-			<Button href="#contacto" size="lg" arrow>Solicita una consulta</Button>
-		</div>
-	</div>
+      <div class="relative mx-auto max-w-3xl text-center">
+        <p class="eyebrow justify-center" data-reveal>
+          ¿Tienes un proyecto en mente?
+        </p>
+        <h2
+          class="section-title mt-5 font-display text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl lg:leading-[1.05]"
+          data-reveal
+          style="--reveal-delay: 100ms"
+        >
+          Hablemos.
+        </h2>
+        <p
+          class="mx-auto mt-5 max-w-md text-base leading-relaxed text-text-2 sm:text-lg"
+          data-reveal
+          style="--reveal-delay: 200ms"
+        >
+          Cuéntanos qué quieres conseguir. Te respondemos con un plan claro, sin
+          compromiso.
+        </p>
+        <div
+          class="mt-9 flex flex-wrap items-center justify-center gap-4"
+          data-reveal
+          style="--reveal-delay: 300ms"
+        >
+          <Button href="#contacto" size="lg" arrow>
+            Solicita una consulta
+          </Button>
+          <Button href="#servicios" variant="secondary" size="lg">
+            Ver servicios
+          </Button>
+        </div>
+        <p
+          class="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-text-3"
+          data-reveal
+          style="--reveal-delay: 380ms"
+        >
+          Respuesta en menos de 24 horas laborables
+        </p>
+      </div>
+    </div>
+  </div>
 </section>

@@ -1,72 +1,88 @@
 ---
-import SectionHeading from './SectionHeading.astro';
-import ServiceCard from './ServiceCard.astro';
+import SectionHeading from "./SectionHeading.astro";
+import ServiceCard from "./ServiceCard.astro";
 
 const services = [
-	{
-		icon: 'target',
-		title: 'Estrategia digital',
-		description: 'Un plan claro para crecer.'
-	},
-	{
-		icon: 'search',
-		title: 'SEO',
-		description: 'Visibilidad que se convierte en clientes.'
-	},
-	{
-		icon: 'megaphone',
-		title: 'Publicidad online',
-		description: 'Cada euro invertido, medido.'
-	},
-	{
-		icon: 'share-2',
-		title: 'Social Media',
-		description: 'Contenido que construye marca.'
-	},
-	{
-		icon: 'pen-tool',
-		title: 'Branding',
-		description: 'Identidad que se recuerda.'
-	},
-	{
-		icon: 'code',
-		title: 'Desarrollo web',
-		description: 'Webs rápidas que convierten.'
-	},
-	{
-		icon: 'bar-chart',
-		title: 'Analítica y optimización',
-		description: 'Decisiones con datos, no opiniones.'
-	}
+  {
+    icon: "target",
+    title: "Estrategia digital",
+    description: "Un plan claro para crecer.",
+  },
+  {
+    icon: "search",
+    title: "SEO",
+    description: "Visibilidad que se convierte en clientes.",
+  },
+  {
+    icon: "megaphone",
+    title: "Publicidad online",
+    description: "Cada euro invertido, medido.",
+  },
+  {
+    icon: "share-2",
+    title: "Social Media",
+    description: "Contenido que construye marca.",
+  },
+  {
+    icon: "pen-tool",
+    title: "Branding",
+    description: "Identidad que se recuerda.",
+  },
+  {
+    icon: "code",
+    title: "Desarrollo web",
+    description: "Webs rápidas que convierten.",
+  },
+  {
+    icon: "bar-chart",
+    title: "Analítica y optimización",
+    description: "Decisiones con datos, no opiniones.",
+  },
 ];
 ---
 
 <section id="servicios" class="relative py-20 lg:py-28">
-	<div class="mx-auto max-w-6xl px-5 sm:px-8">
-		<SectionHeading eyebrow="Servicios" description="Siete áreas, un único objetivo: que tu negocio crezca.">
-			Todo lo que tu marca necesita
-		</SectionHeading>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute left-1/2 top-1/3 h-80 w-[38rem] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-primary-500),transparent_70%)] opacity-[0.05] blur-3xl"></div>
+  </div>
 
-		<div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{
-				services.map((service, i) => (
-					<ServiceCard
-						icon={service.icon}
-						title={service.title}
-						description={service.description}
-						index={String(i + 1).padStart(2, '0')}
-						delay={(i % 3) * 90}
-					/>
-				))
-			}
-			<ServiceCard
-				icon="arrow-up-right"
-				title="¿Buscas algo más?"
-				description="Diseñamos una solución a medida para tu caso."
-				featured
-				href="#contacto"
-				delay={90}
-			/>
-		</div>
-	</div>
+  <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <SectionHeading
+        eyebrow="Servicios"
+        description="Siete áreas, un único objetivo: que tu negocio crezca."
+      >
+        Todo lo que <span class="text-gradient">tu marca</span> necesita
+      </SectionHeading>
+
+      <p
+        class="shrink-0 text-sm font-medium text-text-3 md:pb-2"
+        data-reveal
+        style="--reveal-delay: 150ms"
+      >
+        <span class="font-display text-2xl font-bold text-text">07</span>
+        disciplinas
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service, i) => (
+        <ServiceCard
+          icon={service.icon}
+          title={service.title}
+          description={service.description}
+          index={String(i + 1).padStart(2, "0")}
+          delay={(i % 3) * 90}
+        />
+      ))}
+      <ServiceCard
+        icon="arrow-up-right"
+        title="¿Buscas algo más?"
+        description="Diseñamos una solución a medida para tu caso."
+        featured
+        href="#contacto"
+        delay={90}
+      />
+    </div>
+  </div>
 </section>
